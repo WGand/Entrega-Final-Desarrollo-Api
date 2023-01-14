@@ -13,7 +13,7 @@ export class CreateCourseService implements CreateCourse {
     private readonly courseRepository: CourseRepositoryService,
     private readonly courseFactory: CourseFactory,
   ) {}
-  createCourse(course: createCourseDto): Promise<Result<Course>> {
+  async createCourse(course: createCourseDto): Promise<Result<Course>> {
     return this.courseRepository.createCourse(
       this.courseFactory.createCourse(course).get(),
     );
