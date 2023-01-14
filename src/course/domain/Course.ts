@@ -3,23 +3,27 @@ import { CourseIdVO } from './value_objects/CourseIdVO';
 import { CourseStateEnum } from './CourseStateEnum';
 import { CourseTitleVO } from './value_objects/CourseTitleVO';
 import { Lesson } from './Lesson';
+import { ImagenVO } from './value_objects/ImagenVO';
 
 export class Course {
-  private id: CourseIdVO;
+  private id?: CourseIdVO;
   private title: CourseTitleVO;
   private description: CourseDescriptionVO;
   private state: CourseStateEnum;
+  private imagen: ImagenVO;
   private lesson: Lesson[];
   constructor(
-    id: CourseIdVO,
     title: CourseTitleVO,
     description: CourseDescriptionVO,
     state: CourseStateEnum,
+    imagen: ImagenVO,
+    id?: CourseIdVO,
   ) {
     this.id = id;
     this.title = title;
     this.description = description;
     this.state = state;
+    this.imagen = imagen;
   }
 
   getId(): CourseIdVO {
@@ -40,5 +44,8 @@ export class Course {
 
   getLessons(): Lesson[] {
     return this.lesson;
+  }
+  getImage(): ImagenVO {
+    return this.imagen;
   }
 }

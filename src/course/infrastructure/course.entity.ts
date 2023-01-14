@@ -1,5 +1,4 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { CourseStateEnum } from '../domain/CourseStateEnum';
 import { LessonEntity } from './lesson.entity';
 
 @Entity()
@@ -11,10 +10,13 @@ export class CourseEntity {
   title: string;
 
   @Column()
+  imagen: string;
+
+  @Column()
   description: string;
 
   @Column()
-  state: CourseStateEnum;
+  state: string;
 
   @OneToMany(() => LessonEntity, (lesson) => lesson.course)
   lessons: LessonEntity[];

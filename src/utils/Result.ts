@@ -1,6 +1,9 @@
 export class Result<T> {
   private result: T;
   private error: Error;
+  constructor(result: T) {
+    this.result = result;
+  }
 
   isSucess(): boolean {
     return this.result !== undefined;
