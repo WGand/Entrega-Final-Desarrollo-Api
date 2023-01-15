@@ -21,12 +21,17 @@ export class CourseRepositoryService implements CourseRepository {
     private readonly lessonRepository: Repository<LessonEntity>,
     private readonly courseFactory: CourseFactory,
   ) {}
+ 
+ 
   async getCourseById(id: CourseIdVO): Promise<Result<Course>> {
    const courseDto = new getCourseByIdDto();
    courseDto.id = id.getValue().toString();
-   return await this.courseRepository.findOne({
-    where: { course: parseInt(courseDto) },
-  });
+   return this.courseFactory.getCourseById(
+    await this.courseRepository.findOne({
+      where: { id: parseInt(courseDto.id) },
+    }
+    )
+   )
   }
 
   async createCourse(course: Course): Promise<Result<Course>> {

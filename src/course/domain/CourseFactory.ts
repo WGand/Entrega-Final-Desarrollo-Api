@@ -1,6 +1,7 @@
 import { Result } from 'src/utils/Result';
 import { CoursePayload } from '../application/coursePayload';
 import { createCourseDto } from '../infrastructure/createCourse.dto';
+import { getCourseByIdDto } from '../infrastructure/getCourseById.dto';
 import { Course } from './Course';
 import { CourseStateEnum } from './CourseStateEnum';
 import { CourseDescriptionVO } from './value_objects/CourseDescriptionVO';
@@ -18,4 +19,17 @@ export class CourseFactory {
     );
     return new Result<Course>(courseCreated);
   }
+  
+  getCourseById(course: getCourseByIdDto): Result<Course> {
+    const courseCreated = new Course(
+      new CourseTitleVO("assjoadasoidoais"),
+      new CourseDescriptionVO("jdoisadjoiasdjoias"),
+      CourseStateEnum["Published"],
+      new ImagenVO("ijdoisajoidajoi"),
+      new CourseIdVO(parseInt(course.id)),
+
+    );
+    return new Result<Course>(courseCreated);
+  }
+
 }
