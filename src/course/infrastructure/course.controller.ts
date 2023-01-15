@@ -12,7 +12,7 @@ import { getAllCoursesService } from './getAllCourses.service';
 @Controller('courses')
 export class CourseController {
   constructor(private readonly createCourseService: CreateCourseService,
-    private readonly getAllCoursesService: getAllCoursesService) {}
+    private readonly getAllCoursesServices: getAllCoursesService) {}
   @Post()
   async createCourse(@Body() course: createCourseDto): Promise<void> {
     const appService = new CourseService(
@@ -23,7 +23,7 @@ export class CourseController {
 
   @Get()
   async GetAllCourses(@Body() course: createCourseDto): Promise<Iterable<Course>> {
-    return new getAllCoursesApplicationService()
+    return new getAllCoursesApplicationService(this.getAllCoursesServices)
 
   }
 }
