@@ -45,7 +45,15 @@ export class Course {
   getLessons(): Lesson[] {
     return this.lesson;
   }
+  
   getImage(): ImagenVO {
     return this.imagen;
   }
+
+  addLesson(lesson: Lesson): void{
+    
+    this.lesson.push(lesson); 
+    
+  }
+  
 }

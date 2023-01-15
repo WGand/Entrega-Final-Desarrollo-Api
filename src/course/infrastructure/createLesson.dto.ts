@@ -7,7 +7,7 @@ export class createLessonDto {
   @IsString()
   @IsNotEmpty()
   description: string;
-  @IsString()
-  @IsNotEmpty()
-  content: string;
+  
+
+  /*  */
 }

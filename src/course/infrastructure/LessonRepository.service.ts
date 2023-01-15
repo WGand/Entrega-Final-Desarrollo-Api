@@ -20,13 +20,13 @@ export class LessonRepositoryService implements LessonRepository {
     private readonly lessonRepository: Repository<LessonEntity>,
     private readonly courseFactory: CourseFactory,
   ) {}
-    /*async createLesson(lesson: Lesson,course: Course): Promise<Result<Course>> {
+    async createLesson(lesson: Lesson,course: Course): Promise<Result<Course>> {
       const lessonDto = new createLessonDto();
       lessonDto.title = lesson.getTitle().getValue();
       lessonDto.description=lesson.getDescription().getValue();
       
         
-    }*/
+    }
 
 
 
