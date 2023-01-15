@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { Result } from 'src/utils/Result';
-import { CoursePayload } from '../application/coursePayload';
 import { CreateCourse } from '../application/CreateCourse';
 import { Course } from '../domain/Course';
 import { CourseFactory } from '../domain/CourseFactory';
@@ -18,8 +17,4 @@ export class CreateCourseService implements CreateCourse {
       this.courseFactory.createCourse(course).get(),
     );
   }
-
-  //   async createCourse(course: createCourseDto): Promise<Result<Course>> {
-  //     return this.courseRepository.createCourse(course);
-  //   }
 }

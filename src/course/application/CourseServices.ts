@@ -12,6 +12,10 @@ export class CourseService {
     this.applicationService = applicationService;
   }
   async createCourse(course: createCourseDto): Promise<void> {
-    this.applicationService.execute(course as unknown as CourseParameterObject);
+    console.log(
+      await this.applicationService.execute(
+        course as unknown as CourseParameterObject,
+      ),
+    );
   }
 }
