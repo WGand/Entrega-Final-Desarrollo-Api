@@ -20,7 +20,7 @@ export class getCourseByIdApplicationService
     return new Result((await course).get().getId().getValue().toString());
   }
 
-  async createCourse(
+  async getCourseById(
     courseDto: getCourseByIdDto,
   ): Promise<CourseParameterObject> {
     const course = await this.getCourseByIdService.getCourseById(courseDto);

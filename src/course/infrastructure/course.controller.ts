@@ -3,6 +3,7 @@ import { CourseService } from '../application/CourseServices';
 import { CreateCourseApplicationService } from '../application/CreateCourseAppService';
 import { getCourseByIdApplicationService } from '../application/getCourseByIdAppService';
 import { Logger } from '../application/Logger';
+import { Course } from '../domain/Course';
 import { createCourseDto } from './createCourse.dto';
 import { CreateCourseService } from './CreateCourse.service';
 import { getCourseByIdDto } from './getCourseById.dto';
@@ -21,12 +22,5 @@ export class CourseController {
     return appService.createCourse(course);
   }
 
-  @Get()
-  async getCourseById(@Body() courseById: getCourseByIdDto): Promise<void> {
-    const appService = new CourseService(
-      new Logger(new getCourseByIdApplicationService(this.getCourseByIdService)),
-    );
-    return appService.getCourseById(courseById);
-  }
-  
+
 }
