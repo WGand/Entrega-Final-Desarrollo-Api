@@ -19,17 +19,15 @@ export class CourseFactory {
     );
     return new Result<Course>(courseCreated);
   }
-  
+
   getCourseById(course: getCourseByIdDto): Result<Course> {
     const courseCreated = new Course(
-      new CourseTitleVO("assjoadasoidoais"),
-      new CourseDescriptionVO("jdoisadjoiasdjoias"),
-      CourseStateEnum["Published"],
-      new ImagenVO("ijdoisajoidajoi"),
+      new CourseTitleVO('assjoadasoidoais'),
+      new CourseDescriptionVO('jdoisadjoiasdjoias'),
+      CourseStateEnum['Published'],
+      new ImagenVO('ijdoisajoidajoi'),
       new CourseIdVO(parseInt(course.id)),
-
     );
     return new Result<Course>(courseCreated);
   }
-
 }
