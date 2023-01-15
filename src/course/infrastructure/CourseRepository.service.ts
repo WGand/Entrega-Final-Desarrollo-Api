@@ -27,10 +27,9 @@ export class CourseRepositoryService implements CourseRepository {
    const courseDto = new getCourseByIdDto();
    courseDto.id = id.getValue().toString();
    return this.courseFactory.getCourseById(
-    await this.courseRepository.findOne({
-      where: { id: parseInt(courseDto.id) },
-    }
-    )
+    await this.courseRepository.findOneBy({
+      id: courseDto.id,
+    })
    )
   }
 
