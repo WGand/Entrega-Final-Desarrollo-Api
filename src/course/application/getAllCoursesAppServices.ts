@@ -13,7 +13,7 @@ export class getAllCoursesApplicationService
   constructor(private readonly getAllCoursesService: getAllCourses) {
     this.getAllCoursesService = getAllCoursesService;
   }
-  async execute(service: CourseParameterObject): Promise<Result<Iterable<Course>>> {
+  async execute(): Promise<Result<Iterable<Course>>> {
     const course = await this.getAllCoursesService.getAllCourses();
     return (course);
   }

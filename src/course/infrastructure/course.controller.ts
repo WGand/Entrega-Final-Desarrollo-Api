@@ -23,7 +23,7 @@ export class CourseController {
 
   @Get()
   async GetAllCourses(@Body() course: createCourseDto): Promise<Iterable<Course>> {
-    returnGetAllCoursesAppService(GetAllCoursesNestjsService(Repository))
+    return new getAllCoursesApplicationService()
 
   }
 }
