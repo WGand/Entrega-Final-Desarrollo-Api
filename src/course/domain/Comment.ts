@@ -4,7 +4,7 @@ import { CommentMessageVO } from './value_objects/CommentMessageVO';
 export class Comment {
   private readonly id: CommentIdVO;
   private readonly comment: CommentMessageVO;
-  constructor(id: CommentIdVO, comment: CommentMessageVO) {
+  constructor(comment: CommentMessageVO, id?: CommentIdVO) {
     this.id = id;
     this.comment = comment;
   }

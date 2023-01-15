@@ -19,20 +19,25 @@ export class LessonRepositoryService implements LessonRepository {
     @InjectRepository(LessonEntity)
     private readonly lessonRepository: Repository<LessonEntity>,
     private readonly courseFactory: CourseFactory,
-  ) {}
-    async createLesson(lesson: Lesson,course: Course): Promise<Result<Course>> {
-      const lessonDto = new createLessonDto();
-      lessonDto.title = lesson.getTitle().getValue();
-      lessonDto.description=lesson.getDescription().getValue();
-      
-        
-    }
+  ) { }
+  async createLesson(lesson: Lesson): Promise<Result<Lesson>> {
+    const lessonDto = new createLessonDto();
+    lessonDto.title = lesson.getTitle().getValue();
+    lessonDto.description = lesson.getDescription().getValue();
+    lessonDto.video.videoUrl = lesson.getContent().getUrl().getValue();
+    lessonDto.video.type = lesson.getContent().getType();
+    lessonDto.video.title = lesson.getContent().getTitle().getValue();
+    lessonDto.video.videoDuration = lesson.getContent().getDuration().getValue();
+    lessonDto.comments = lesson.getComments();
+    return this.courseFactory.createLesson(
+      await this.lessonRepository.save(lessonDto),
+    )
 
 
+  }
 
-    /**/ 
+  /* en el domain*/
 
- 
   async createCourse(course: Course): Promise<Result<Course>> {
     const courseDto = new createCourseDto();
     courseDto.title = course.getTitle().getValue();

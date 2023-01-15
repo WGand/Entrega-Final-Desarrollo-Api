@@ -8,13 +8,13 @@ import { VideoUrlVO } from './value_objects/VideoUrlVO';
 export class Video extends Content {
   private videoUrl: VideoUrlVO;
   private videoDuration: VideoDurationVO;
-  private videoId: VideoIdVO;
+  private videoId?: VideoIdVO;
   constructor(
     videoUrl: VideoUrlVO,
     type: ContentTypeEnum,
     title: ContentTitleVO,
     videoDuration: VideoDurationVO,
-    videoId: VideoIdVO,
+    videoId?: VideoIdVO,
   ) {
     super(type, title);
     this.videoUrl = videoUrl;
