@@ -6,6 +6,8 @@ import { CourseEntity } from './course.entity';
 import { CourseRepositoryService } from './CourseRepository.service';
 import { CreateCourseService } from './CreateCourse.service';
 import { getAllCoursesService } from './getAllCourses.service';
+import { getCoursesByIdService } from './getCourseById.service';
+
 import { LessonEntity } from './lesson.entity';
 
 @Module({
@@ -16,6 +18,8 @@ import { LessonEntity } from './lesson.entity';
     CourseFactory,
     CreateCourseService,
     getAllCoursesService,
+    getCoursesByIdService
+    
   ],
 })
 export class CourseModule {}
