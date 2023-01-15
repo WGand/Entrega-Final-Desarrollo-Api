@@ -23,7 +23,7 @@ export class CourseController {
 
   @Get()
   async GetAllCourses(@Body() course: createCourseDto): Promise<Iterable<Course>> {
-    return new getAllCoursesApplicationService(this.getAllCoursesServices)
+    return (await new getAllCoursesApplicationService(this.getAllCoursesServices).execute()).get;
 
   }
 }
