@@ -10,6 +10,9 @@ export class CourseEntity {
   title: string;
 
   @Column()
+  professorName: string;
+
+  @Column()
   imagen: string;
 
   @Column()

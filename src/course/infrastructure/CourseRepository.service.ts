@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Result } from 'src/utils/Result';
 import { Repository } from 'typeorm';
-import { CoursePayload } from '../application/coursePayload';
 import { Course } from '../domain/Course';
 import { CourseFactory } from '../domain/CourseFactory';
 import { CourseRepository } from '../domain/CourseRepository';
@@ -25,6 +24,7 @@ export class CourseRepositoryService implements CourseRepository {
     courseDto.description = course.getDescription().getValue();
     courseDto.state = course.getState();
     courseDto.imagen = course.getImage().getValue();
+    courseDto.professorName = course.getProfessorName().getValue();
     return this.courseFactory.createCourse(
       await this.courseRepository.save(courseDto),
     );
@@ -32,11 +32,11 @@ export class CourseRepositoryService implements CourseRepository {
 
   async getAllCourses(): Promise<Result<Iterable<Course>>> {
     console.log('GETALLCOURSES REPO SERVICE');
-    const list =  await this.courseRepository.find({
+    const list = await this.courseRepository.find({
       where: {
-        state: 'Published'
+        state: 'Published',
       },
-  })
-    return new Result(list as Iterable<Course>)
-
-}}
+    });
+    return new Result(list as Iterable<Course>);
+  }
+}
