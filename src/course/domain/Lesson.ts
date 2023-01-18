@@ -16,8 +16,6 @@ export class Lesson {
     description: LessonDescriptionVO,
     comments?: Comment[],
     id?: LessonIdVO,
-
-
   ) {
     this.content = content;
     this.comments = comments;

@@ -15,9 +15,6 @@ export class LessonEntity {
   @Column()
   content: string;
 
-  @Column()
-  CourseId: string;
-
   @ManyToOne(() => CourseEntity, (course) => course.lessons)
   course: CourseEntity;
 }
