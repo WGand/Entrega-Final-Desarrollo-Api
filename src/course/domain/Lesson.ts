@@ -6,28 +6,25 @@ import { Video } from './Video';
 export class Lesson {
   private id?: LessonIdVO;
   private title: LessonTitleVO;
-  private content: Video;
   private description: LessonDescriptionVO;
-  private comments?: Comment[];
+  private video: Video;
 
   constructor(
     title: LessonTitleVO,
-    content: Video,
+    video: Video,
     description: LessonDescriptionVO,
     comments?: Comment[],
     id?: LessonIdVO,
+
+
   ) {
-    this.content = content;
-    this.comments = comments;
+    this.video = video;
     this.description = description;
     this.title = title;
     this.id = id;
   }
   getContent(): Video {
-    return this.content;
-  }
-  getComments(): Comment[] {
-    return this.comments;
+    return this.video;
   }
 
   getDescription(): LessonDescriptionVO {
@@ -42,9 +39,8 @@ export class Lesson {
     return this.id;
   }
 
-  addComment(comment: Comment): void {
-    this.comments.push(comment);
-  }
+
+
 
   /*tambien le colocamos el idVO?*/
 }
