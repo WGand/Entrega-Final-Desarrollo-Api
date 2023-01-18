@@ -1,5 +1,4 @@
 import { IsNotEmpty, IsString, ValidateNested } from 'class-validator';
-
 export class createLessonDto {
   @IsString()
   @IsNotEmpty()
@@ -7,7 +6,6 @@ export class createLessonDto {
   @IsString()
   @IsNotEmpty()
   description: string;
-
   @IsNotEmpty()
   @ValidateNested()
   video: {
@@ -17,4 +15,8 @@ export class createLessonDto {
     videoDuration: number;
   };
   comments: Comment[];
+
+  @IsString()
+  @IsNotEmpty()
+  CourseId: string
 }
