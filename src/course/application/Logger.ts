@@ -10,13 +10,8 @@ export class Logger extends ServiceDecorator<CourseParameterObject, string> {
     this.appService = appService;
   }
   async execute(service: CourseParameterObject): Promise<Result<string>> {
-
-    var fs= require('fs');
-    var stream = fs.createWriteStream('Logger.txt');
-    stream.once('open', function(fd) {
-      stream.write('Log: ', service);
-      stream.end();
-    });
+    
+    console.log('Log: ', service);
     const result = this.appService.execute(service);
     return await new Result('asdasd');
   }
