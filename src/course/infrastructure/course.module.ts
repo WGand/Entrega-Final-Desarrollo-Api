@@ -6,6 +6,7 @@ import { CourseEntity } from './course.entity';
 import { CourseRepositoryService } from './CourseRepository.service';
 import { CreateCourseService } from './CreateCourse.service';
 import { CreateLessonService } from './CreateLesson.service';
+import { DeleteCourseService } from './DeleteCourse.service';
 import { getAllCoursesService } from './getAllCourses.service';
 import { getCourseByIdService } from './getCourseById.service';
 import { LessonController } from './lesson.controller';
@@ -23,6 +24,7 @@ import { LessonRepositoryService } from './LessonRepository.service';
     getAllCoursesService,
     CreateLessonService,
     LessonRepositoryService,
+    DeleteCourseService
   ],
 })
 export class CourseModule { }

@@ -1,14 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Result } from 'src/utils/Result';
-import { Repository } from 'typeorm';
+import { Entity, Repository } from 'typeorm';
 import { Course } from '../domain/Course';
 import { CourseFactory } from '../domain/CourseFactory';
 import { CourseRepository } from '../domain/CourseRepository';
-import { CourseIdVO } from '../domain/value_objects/CourseIdVO';
 import { CourseEntity } from './course.entity';
 import { createCourseDto } from './createCourse.dto';
-import { getCourseByIdDto } from './getCourseById.dto';
 import { LessonEntity } from './lesson.entity';
 
 @Injectable()
@@ -51,5 +49,11 @@ export class CourseRepositoryService implements CourseRepository {
       },
     });
     return new Result(list as Iterable<Course>);
+  }
+
+  async DeleteCourseById(id: string): Promise<Result<string>> {
+    console.log('DELETE REPO SERVICE');
+    this.courseRepository.delete(parseInt(id));
+    return new Result('Curso Borrado');
   }
 }
