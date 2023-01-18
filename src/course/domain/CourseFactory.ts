@@ -15,7 +15,6 @@ import { ContentTypeEnum } from './ContentType';
 import { ContentTitleVO } from './value_objects/ContentTitleVO';
 import { VideoDurationVO } from './value_objects/VideoDurationVO';
 import { ProfessorNameVO } from './value_objects/ProfessorNameVO';
-import { CourseIdVO } from './value_objects/CourseIdVO';
 
 export class CourseFactory {
   createCourse(course: createCourseDto): Result<Course> {

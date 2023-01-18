@@ -5,10 +5,8 @@ import { Repository } from 'typeorm';
 import { Course } from '../domain/Course';
 import { CourseFactory } from '../domain/CourseFactory';
 import { CourseRepository } from '../domain/CourseRepository';
-import { CourseIdVO } from '../domain/value_objects/CourseIdVO';
 import { CourseEntity } from './course.entity';
 import { createCourseDto } from './createCourse.dto';
-import { getCourseByIdDto } from './getCourseById.dto';
 import { LessonEntity } from './lesson.entity';
 
 @Injectable()
