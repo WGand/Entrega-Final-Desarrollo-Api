@@ -3,7 +3,7 @@ import { CourseService } from '../application/CourseServices';
 import { CreateCourseApplicationService } from '../application/CreateCourseAppService';
 import { getAllCoursesApplicationService } from '../application/getAllCoursesAppServices';
 import { getCourseByIdApplicationService } from '../application/getCourseByIdAppService';
-import { DeleteCourseApplicationService} from '../application/DeleteCourseAppService';
+import { DeleteCourseApplicationService } from '../application/DeleteCourseAppService';
 import { Logger } from '../application/Logger';
 import { Course } from '../domain/Course';
 import { createCourseDto } from './createCourse.dto';
@@ -30,7 +30,7 @@ export class CourseController {
         new LoggerImplementation(),
       ),
     );
-    return appService.createCourse(course);
+    console.log(await appService.createCourse(course));
   }
 
   @Get()
@@ -55,7 +55,10 @@ export class CourseController {
 
   @Delete(':id')
   async DeleteCourseById(@Param('id') id: string): Promise<string> {
-    const appService = new DeleteCourseApplicationService(this.DeleteCourseService,new CourseIdVO(parseInt(id))).execute();
-    return ('Deleted')
+    const appService = new DeleteCourseApplicationService(
+      this.DeleteCourseService,
+      new CourseIdVO(parseInt(id)),
+    ).execute();
+    return 'Deleted';
   }
 }

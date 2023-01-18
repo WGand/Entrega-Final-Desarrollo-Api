@@ -11,6 +11,7 @@ import { CreateLessonService } from './CreateLesson.service';
 //import { getAllCoursesService } from './getAllCourses.service';
 import { getCourseByIdService } from './getCourseById.service';
 import { Course } from '../domain/Course';
+import { LoggerImplementation } from './LoggerImplementation';
 
 @Controller('lesson')
 export class LessonController {
@@ -18,16 +19,19 @@ export class LessonController {
     private readonly createLessonService: CreateLessonService,
     //private readonly getAllCoursesServices: getAllCoursesService,
     private readonly getCourseByIdService: getCourseByIdService,
-  ) { }
+  ) {}
   @Post()
   async createLesson(@Body() lesson: createLessonDto): Promise<void> {
     if (this.getCourseByIdService.getCourseById(lesson.CourseId) != undefined) {
       const appService = new LessonService(
-        new Logger(new CreateLessonApplicationService(this.createLessonService)),
+        new Logger(
+          new CreateLessonApplicationService(this.createLessonService),
+          new LoggerImplementation(),
+        ),
       );
-      return appService.createLesson(lesson)
+      return appService.createLesson(lesson);
     }
-    return
+    return;
   }
 
   @Get(':id')
