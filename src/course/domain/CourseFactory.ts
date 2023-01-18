@@ -1,7 +1,6 @@
 import { Result } from 'src/utils/Result';
 import { createCourseDto } from '../infrastructure/createCourse.dto';
 import { createLessonDto } from '../infrastructure/createLesson.dto';
-import { getCourseByIdDto } from '../infrastructure/getCourseById.dto';
 import { Course } from './Course';
 import { CourseStateEnum } from './CourseStateEnum';
 import { Lesson } from './Lesson';
