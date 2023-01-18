@@ -16,4 +16,5 @@ export class CourseTitleVO implements ValueObject<string> {
   getValue(): string {
     return this.title;
   }
+
 }
