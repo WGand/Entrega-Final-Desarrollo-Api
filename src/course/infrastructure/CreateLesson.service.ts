@@ -15,6 +15,7 @@ export class CreateLessonService implements CreateLesson {
   async createLesson(lesson: createLessonDto): Promise<Result<Lesson>> {
     return this.lessonRepository.createLesson(
       this.courseFactory.createLesson(lesson).get(),
+      parseInt(lesson.CourseId)
     );
   }
 }

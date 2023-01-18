@@ -19,18 +19,27 @@ export class LessonRepositoryService implements LessonRepository {
     private readonly lessonRepository: Repository<LessonEntity>,
     private readonly courseFactory: CourseFactory,
   ) { }
-  async createLesson(lesson: Lesson): Promise<Result<Lesson>> {
+  async createLesson(lesson: Lesson, courseId: number): Promise<Result<Lesson>> {
     const lessonDto = new createLessonDto();
+
     lessonDto.title = lesson.getTitle().getValue();
     lessonDto.description = lesson.getDescription().getValue();
+    lessonDto.video = {
+      "videoUrl": lesson.getContent().getUrl().getValue(),
+      "type": lesson.getContent().getType(),
+      "title": lesson.getContent().getTitle().getValue(),
+      "videoDuration": lesson.getContent().getDuration().getValue()
+    }
+    lessonDto.CourseId = String(courseId)
+    /*
     lessonDto.video.videoUrl = lesson.getContent().getUrl().getValue();
-    lessonDto.video.type = lesson.getContent().getType();
-    lessonDto.video.title = lesson.getContent().getTitle().getValue();
-    lessonDto.video.videoDuration = lesson
+    lessonDto.video['type'] = lesson.getContent().getType();
+    lessonDto.video['title'] = lesson.getContent().getTitle().getValue();
+    lessonDto.video['videoDuration'] = lesson
       .getContent()
       .getDuration()
       .getValue();
-    lessonDto.comments = lesson.getComments();
+      */
     return this.courseFactory.createLesson(
       await this.lessonRepository.save(lessonDto),
     );

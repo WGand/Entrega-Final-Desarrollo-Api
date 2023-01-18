@@ -53,7 +53,6 @@ export class CourseFactory {
       ),
       new LessonDescriptionVO(lesson.description),
 
-      lesson.comments,
     );
     return new Result<Lesson>(lessonCreated);
 
