@@ -30,18 +30,6 @@ export class CourseFactory {
     return new Result<Course>(courseCreated);
   }
 
-  getCourseById(course: getCourseByIdDto): Result<Course> {
-    const courseCreated = new Course(
-      new CourseTitleVO('assjoadasoidoais'),
-      new CourseDescriptionVO('jdoisadjoiasdjoias'),
-      CourseStateEnum['Published'],
-      new ImagenVO('ijdoisajoidajoi'),
-      new ProfessorNameVO('Erstwhile'),
-      new CourseIdVO(parseInt(course.id)),
-    );
-    return new Result<Course>(courseCreated);
-  }
-
   createLesson(lesson: createLessonDto): Result<Lesson> {
     const lessonCreated = new Lesson(
       new LessonTitleVO(lesson.title),
