@@ -5,6 +5,9 @@ export class VideoUrlVO implements ValueObject<string> {
   constructor(url: string) {
     this.url = url;
   }
+  isValid(): boolean {
+    return this.url.length > 0;
+  }
 
   equals(vo: VideoUrlVO): boolean {
     return this.url === vo.url;

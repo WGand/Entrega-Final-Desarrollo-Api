@@ -5,6 +5,9 @@ export class LessonTitleVO implements ValueObject<string> {
   constructor(title: string) {
     this.title = title;
   }
+  isValid(): boolean {
+    return this.title.length > 0;
+  }
 
   equals(vo: LessonTitleVO): boolean {
     return this.title === vo.title;

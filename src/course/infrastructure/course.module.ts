@@ -24,7 +24,7 @@ import { LessonRepositoryService } from './LessonRepository.service';
     getAllCoursesService,
     CreateLessonService,
     LessonRepositoryService,
-    DeleteCourseService
+    DeleteCourseService,
   ],
 })
-export class CourseModule { }
+export class CourseModule {}

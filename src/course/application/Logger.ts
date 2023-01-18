@@ -18,6 +18,6 @@ export class Logger extends ServiceDecorator<CourseParameterObject, string> {
   async execute(service: CourseParameterObject): Promise<Result<string>> {
     this.iLogger.log('comando: ' + service.title);
     const result = this.appService.execute(service);
-    return await new Result('asdasd');
+    return await result;
   }
 }

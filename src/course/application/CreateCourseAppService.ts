@@ -14,6 +14,6 @@ export class CreateCourseApplicationService
     const course = this.createCourseService.createCourse(
       service as unknown as createCourseDto,
     );
-    return new Result((await course).get().getDescription().getValue());
+    return await course;
   }
 }

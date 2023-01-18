@@ -13,6 +13,7 @@ import { getCourseByIdService } from './getCourseById.service';
 import { LoggerImplementation } from './LoggerImplementation';
 import { DeleteCourseService } from './DeleteCourse.service';
 import { CourseIdVO } from '../domain/value_objects/CourseIdVO';
+import { Result } from 'src/utils/Result';
 
 @Controller('courses')
 export class CourseController {
@@ -23,20 +24,18 @@ export class CourseController {
     private readonly DeleteCourseService: DeleteCourseService,
   ) {}
   @Post()
-  async createCourse(@Body() course: createCourseDto): Promise<void> {
+  async createCourse(@Body() course: createCourseDto): Promise<Result<string>> {
     const appService = new CourseService(
       new Logger(
         new CreateCourseApplicationService(this.createCourseService),
         new LoggerImplementation(),
       ),
     );
-    console.log(await appService.createCourse(course));
+    return await appService.createCourse(course);
   }
 
   @Get()
-  async GetAllCourses(
-    @Body() course: createCourseDto,
-  ): Promise<Iterable<Course>> {
+  async GetAllCourses(): Promise<Iterable<Course>> {
     return (
       await new getAllCoursesApplicationService(
         this.getAllCoursesServices,
