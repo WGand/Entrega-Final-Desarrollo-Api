@@ -4,6 +4,7 @@ import { CourseStateEnum } from './CourseStateEnum';
 import { CourseTitleVO } from './value_objects/CourseTitleVO';
 import { Lesson } from './Lesson';
 import { ImagenVO } from './value_objects/ImagenVO';
+import { ProfessorNameVO } from './value_objects/ProfessorNameVO';
 
 export class Course {
   private id?: CourseIdVO;
@@ -11,12 +12,14 @@ export class Course {
   private description: CourseDescriptionVO;
   private state: CourseStateEnum;
   private imagen: ImagenVO;
+  private professorName: ProfessorNameVO;
   private lesson: Lesson[];
   constructor(
     title: CourseTitleVO,
     description: CourseDescriptionVO,
     state: CourseStateEnum,
     imagen: ImagenVO,
+    professorName: ProfessorNameVO,
     id?: CourseIdVO,
   ) {
     this.id = id;
@@ -24,6 +27,7 @@ export class Course {
     this.description = description;
     this.state = state;
     this.imagen = imagen;
+    this.professorName = professorName;
   }
 
   getId(): CourseIdVO {
@@ -47,5 +51,8 @@ export class Course {
   }
   getImage(): ImagenVO {
     return this.imagen;
+  }
+  getProfessorName(): ProfessorNameVO {
+    return this.professorName;
   }
 }

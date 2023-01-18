@@ -1,33 +1,14 @@
-import { ApplicationService } from "src/core/application/ApplicationService";
-import { Result } from "src/utils/Result";
-import { CourseParameterObject } from "../domain/CourseParameterObject";
-import { getCourseByIdDto } from "../infrastructure/getCourseById.dto";
-import { getCourseById } from "./getCourseById";
+/* eslint-disable prettier/prettier */
+import { Result } from 'src/utils/Result';
+import { Course } from '../domain/Course';
+import { getCourseById } from './getCourseById';
 
-
-
-
-export class getCourseByIdApplicationService
-  implements ApplicationService<CourseParameterObject, string>
-{
+export class getCourseByIdApplicationService {
   constructor(private readonly getCourseByIdService: getCourseById) {
     this.getCourseByIdService = getCourseByIdService;
   }
-  async execute(service: CourseParameterObject): Promise<Result<string>> {
-    const course = this.getCourseByIdService.getCourseById(
-      service as unknown as getCourseByIdDto,
-    );
-    return new Result((await course).get().getId().getValue().toString());
-  }
-
-  async getCourseById(
-    courseDto: getCourseByIdDto,
-  ): Promise<CourseParameterObject> {
-    const course = await this.getCourseByIdService.getCourseById(courseDto);
-    console.log(course);
-    const courseParameterObject = new CourseParameterObject(
-      course.get().getId().getValue().toString(),
-    );
-    return courseParameterObject;
+  async execute(id: string): Promise<Result<Iterable<Course>>> {
+    const course = await this.getCourseByIdService.getCourseById(id);
+    return course;
   }
 }

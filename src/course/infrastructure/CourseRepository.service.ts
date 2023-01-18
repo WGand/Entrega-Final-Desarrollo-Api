@@ -37,8 +37,29 @@ export class CourseRepositoryService implements CourseRepository {
     courseDto.description = course.getDescription().getValue();
     courseDto.state = course.getState();
     courseDto.imagen = course.getImage().getValue();
+    courseDto.professorName = course.getProfessorName().getValue();
     return this.courseFactory.createCourse(
       await this.courseRepository.save(courseDto),
     );
+  }
+
+  async getAllCourses(): Promise<Result<Iterable<Course>>> {
+    console.log('GETALLCOURSES REPO SERVICE');
+    const list = await this.courseRepository.find({
+      where: {
+        state: 'Published',
+      },
+    });
+    return new Result(list as Iterable<Course>);
+  }
+
+  async getCourseById(id: string): Promise<Result<Iterable<Course>>> {
+    console.log('GETCOURSEBYID REPO SERVICE');
+    const list = await this.courseRepository.find({
+      where: {
+        id: parseInt(id),
+      },
+    });
+    return new Result(list as Iterable<Course>);
   }
 }

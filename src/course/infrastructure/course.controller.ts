@@ -1,3 +1,8 @@
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { CourseService } from '../application/CourseServices';
+import { CreateCourseApplicationService } from '../application/CreateCourseAppService';
+import { getAllCoursesApplicationService } from '../application/getAllCoursesAppServices';
+import { getCourseById } from '../application/getCourseById';
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CourseService } from '../application/CourseServices';
 import { CreateCourseApplicationService } from '../application/CreateCourseAppService';
@@ -6,11 +11,17 @@ import { Logger } from '../application/Logger';
 import { Course } from '../domain/Course';
 import { createCourseDto } from './createCourse.dto';
 import { CreateCourseService } from './CreateCourse.service';
+import { getAllCoursesService } from './getAllCourses.service';
 import { getCourseByIdDto } from './getCourseById.dto';
 import { getCourseByIdService } from './getCourseById.service';
 
 @Controller('courses')
 export class CourseController {
+  constructor(
+    private readonly createCourseService: CreateCourseService,
+    private readonly getAllCoursesServices: getAllCoursesService,
+    private readonly getCourseByIdService: getCourseByIdService,
+  ) {}
   constructor(private readonly createCourseService: CreateCourseService,
               private readonly getCourseByIdService:getCourseByIdService) {}
 
@@ -22,5 +33,23 @@ export class CourseController {
     return appService.createCourse(course);
   }
 
+  @Get()
+  async GetAllCourses(
+    @Body() course: createCourseDto,
+  ): Promise<Iterable<Course>> {
+    return (
+      await new getAllCoursesApplicationService(
+        this.getAllCoursesServices,
+      ).execute()
+    ).get();
+  }
 
+  @Get(':id')
+  async getCourseById(@Param('id') id: string): Promise<Iterable<Course>> {
+    return (
+      await new getCourseByIdApplicationService(
+        this.getCourseByIdService,
+      ).execute(id)
+    ).get();
+  }
 }
