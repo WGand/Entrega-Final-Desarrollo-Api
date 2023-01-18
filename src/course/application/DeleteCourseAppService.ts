@@ -8,10 +8,13 @@ import { Console } from 'console';
 export class DeleteCourseApplicationService
   implements ApplicationService<CourseParameterObject, string>
 {
-  id : CourseIdVO;
-  constructor(private readonly DeleteCourseService: DeleteCourse, id : CourseIdVO) {
+  id: CourseIdVO;
+  constructor(
+    private readonly DeleteCourseService: DeleteCourse,
+    id: CourseIdVO,
+  ) {
     this.DeleteCourseService = DeleteCourseService;
-    this.id = id
+    this.id = id;
   }
   async execute(): Promise<Result<string>> {
     console.log('DENTRO DE EXECUTE');

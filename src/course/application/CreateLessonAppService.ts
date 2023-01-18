@@ -11,7 +11,7 @@ export class CreateLessonApplicationService
     this.createLessonService = createLessonService;
   }
   async execute(service: LessonParameterObject): Promise<Result<string>> {
-    console.log('CreateLessonAppService')
+    console.log('CreateLessonAppService');
     const lesson = this.createLessonService.createLesson(
       service as unknown as createLessonDto,
     );
