@@ -10,6 +10,7 @@ import { createCourseDto } from './createCourse.dto';
 import { CreateCourseService } from './CreateCourse.service';
 import { getAllCoursesService } from './getAllCourses.service';
 import { getCourseByIdService } from './getCourseById.service';
+import { LoggerImplementation } from './LoggerImplementation';
 import { DeleteCourseService } from './DeleteCourse.service';
 import { CourseIdVO } from '../domain/value_objects/CourseIdVO';
 
@@ -24,7 +25,10 @@ export class CourseController {
   @Post()
   async createCourse(@Body() course: createCourseDto): Promise<void> {
     const appService = new CourseService(
-      new Logger(new CreateCourseApplicationService(this.createCourseService)),
+      new Logger(
+        new CreateCourseApplicationService(this.createCourseService),
+        new LoggerImplementation(),
+      ),
     );
     return appService.createCourse(course);
   }
