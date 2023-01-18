@@ -52,7 +52,6 @@ export class CourseFactory {
         new VideoDurationVO(lesson.video.videoDuration),
       ),
       new LessonDescriptionVO(lesson.description),
-
     );
     return new Result<Lesson>(lessonCreated);
 
