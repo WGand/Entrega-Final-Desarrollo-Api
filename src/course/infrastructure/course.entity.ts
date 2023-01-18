@@ -18,6 +18,9 @@ export class CourseEntity {
   @Column()
   state: string;
 
+  @Column()
+  professorName: string;
+
   @OneToMany(() => LessonEntity, (lesson) => lesson.course)
   lessons: LessonEntity[];
 }
