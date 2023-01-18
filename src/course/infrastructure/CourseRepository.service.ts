@@ -21,16 +21,6 @@ export class CourseRepositoryService implements CourseRepository {
     private readonly courseFactory: CourseFactory,
   ) {}
 
-  async getCourseById(id: CourseIdVO): Promise<Result<Course>> {
-    const courseDto = new getCourseByIdDto();
-    courseDto.id = id.getValue().toString();
-    return this.courseFactory.getCourseById(
-      await this.courseRepository.findOneBy({
-        id: courseDto.id,
-      }),
-    );
-  }
-
   async createCourse(course: Course): Promise<Result<Course>> {
     const courseDto = new createCourseDto();
     courseDto.title = course.getTitle().getValue();
@@ -57,7 +47,7 @@ export class CourseRepositoryService implements CourseRepository {
     console.log('GETCOURSEBYID REPO SERVICE');
     const list = await this.courseRepository.find({
       where: {
-        id: parseInt(id),
+        id: id,
       },
     });
     return new Result(list as Iterable<Course>);

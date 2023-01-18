@@ -1,4 +1,3 @@
-import { Content } from './LessonContent';
 import { LessonDescriptionVO } from './value_objects/LessonDescriptionVO';
 import { LessonTitleVO } from './value_objects/LessonTitleVO';
 import { LessonIdVO } from './value_objects/LessonIdVO';
@@ -11,11 +10,13 @@ export class Lesson {
   private description: LessonDescriptionVO;
   private comments?: Comment[];
 
-
-
-
-
-  constructor(title: LessonTitleVO, content: Video, description: LessonDescriptionVO, comments?: Comment[], id?: LessonIdVO,) {
+  constructor(
+    title: LessonTitleVO,
+    content: Video,
+    description: LessonDescriptionVO,
+    comments?: Comment[],
+    id?: LessonIdVO,
+  ) {
     this.content = content;
     this.comments = comments;
     this.description = description;
@@ -30,24 +31,20 @@ export class Lesson {
   }
 
   getDescription(): LessonDescriptionVO {
-    return this.description
+    return this.description;
   }
 
-
   getTitle(): LessonTitleVO {
-    return this.title
+    return this.title;
   }
 
   getId(): LessonIdVO {
-
     return this.id;
   }
-
 
   addComment(comment: Comment): void {
     this.comments.push(comment);
   }
-
 
   /*tambien le colocamos el idVO?*/
 }

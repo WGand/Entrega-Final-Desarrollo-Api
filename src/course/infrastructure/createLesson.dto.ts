@@ -11,18 +11,10 @@ export class createLessonDto {
   @IsNotEmpty()
   @ValidateNested()
   video: {
-    videoUrl: string,
-    type: string,
-    title: string,
-    videoDuration: number,
-
-  }
-
-
-  comments: Comment[]
-
-
-
-
-  /*  */
+    videoUrl: string;
+    type: string;
+    title: string;
+    videoDuration: number;
+  };
+  comments: Comment[];
 }
