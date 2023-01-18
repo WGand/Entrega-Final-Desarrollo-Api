@@ -12,6 +12,7 @@ export class LessonService {
     this.applicationService = applicationService;
   }
   async createLesson(lesson: createLessonDto): Promise<void> {
+    console.log('LessonService')
     this.applicationService.execute(lesson as unknown as LessonParameterObject);
   }
 }

@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { typeOrmConfig } from './config/config.service';
 import { CourseModule } from './course/infrastructure/course.module';
 
+
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -15,4 +16,4 @@ import { CourseModule } from './course/infrastructure/course.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }

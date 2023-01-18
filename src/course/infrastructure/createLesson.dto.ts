@@ -14,7 +14,6 @@ export class createLessonDto {
     title: string;
     videoDuration: number;
   };
-  comments: Comment[];
 
   @IsString()
   @IsNotEmpty()
