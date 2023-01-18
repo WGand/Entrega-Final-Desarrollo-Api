@@ -9,13 +9,14 @@ import { Course } from '../domain/Course';
 import { createCourseDto } from './createCourse.dto';
 import { CreateCourseService } from './CreateCourse.service';
 import { getAllCoursesService } from './getAllCourses.service';
+import { getCourseByIdService } from './getCourseById.service';
 
 @Controller('courses')
 export class CourseController {
   constructor(
     private readonly createCourseService: CreateCourseService,
     private readonly getAllCoursesServices: getAllCoursesService,
-    private readonly getCourseByIdService: getCourseById
+    private readonly getCourseByIdService: getCourseByIdService
       ) {}
   @Post()
   async createCourse(@Body() course: createCourseDto): Promise<void> {
