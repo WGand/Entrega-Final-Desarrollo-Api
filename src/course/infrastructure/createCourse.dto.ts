@@ -13,4 +13,7 @@ export class createCourseDto {
   @IsString()
   @IsNotEmpty()
   imagen: string;
+  @IsString()
+  @IsNotEmpty()
+  professorName: string;
 }

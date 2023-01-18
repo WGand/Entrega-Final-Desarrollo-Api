@@ -1,13 +1,12 @@
 import { Result } from 'src/utils/Result';
-import { CoursePayload } from '../application/coursePayload';
 import { createCourseDto } from '../infrastructure/createCourse.dto';
 import { createLessonDto } from '../infrastructure/createLesson.dto';
+import { getCourseByIdDto } from '../infrastructure/getCourseById.dto';
 import { Course } from './Course';
 import { CourseStateEnum } from './CourseStateEnum';
 import { Lesson } from './Lesson';
 import { Content } from './LessonContent';
 import { CourseDescriptionVO } from './value_objects/CourseDescriptionVO';
-import { CourseIdVO } from './value_objects/CourseIdVO';
 import { CourseTitleVO } from './value_objects/CourseTitleVO';
 import { ImagenVO } from './value_objects/ImagenVO';
 import { LessonDescriptionVO } from './value_objects/LessonDescriptionVO';
@@ -19,7 +18,7 @@ import { ContentTypeEnum } from './ContentType';
 import { ContentTitleVO } from './value_objects/ContentTitleVO';
 import { VideoDurationVO } from './value_objects/VideoDurationVO';
 import { CommentMessageVO } from './value_objects/CommentMessageVO';
-
+import { ProfessorNameVO } from './value_objects/ProfessorNameVO';
 
 export class CourseFactory {
   createCourse(course: createCourseDto): Result<Course> {
@@ -28,6 +27,18 @@ export class CourseFactory {
       new CourseDescriptionVO(course.description),
       CourseStateEnum[course.state],
       new ImagenVO(course.imagen),
+      new ProfessorNameVO('Erstwhile'),
+    );
+    return new Result<Course>(courseCreated);
+  }
+
+  getCourseById(course: getCourseByIdDto): Result<Course> {
+    const courseCreated = new Course(
+      new CourseTitleVO('assjoadasoidoais'),
+      new CourseDescriptionVO('jdoisadjoiasdjoias'),
+      CourseStateEnum['Published'],
+      new ImagenVO('ijdoisajoidajoi'),
+      new CourseIdVO(parseInt(course.id)),
     );
     return new Result<Course>(courseCreated);
 

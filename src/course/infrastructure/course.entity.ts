@@ -4,7 +4,7 @@ import { LessonEntity } from './lesson.entity';
 @Entity()
 export class CourseEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: string;
 
   @Column()
   title: string;
@@ -17,6 +17,9 @@ export class CourseEntity {
 
   @Column()
   state: string;
+
+  @Column()
+  professorName: string;
 
   @OneToMany(() => LessonEntity, (lesson) => lesson.course)
   lessons: LessonEntity[];
