@@ -36,5 +36,15 @@ export class LessonRepositoryService implements LessonRepository {
     );
   }
 
+  async getLessons(id: string): Promise<Result<Iterable<Lesson>>> {
+    console.log('GETLESSONS REPO SERVICE');
+    const list = await this.lessonRepository.find({
+      where: {
+        CourseId: id,
+      },
+    });
+    return new Result(list as Iterable<Lesson>);
+  }
+
 
 }

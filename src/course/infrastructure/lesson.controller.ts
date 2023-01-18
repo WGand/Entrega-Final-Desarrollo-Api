@@ -11,12 +11,14 @@ import { CreateLessonService } from './CreateLesson.service';
 //import { getAllCoursesService } from './getAllCourses.service';
 import { getCourseByIdService } from './getCourseById.service';
 import { Course } from '../domain/Course';
+import { getAllLessonsApplicationService } from '../application/GetAllLessonsGivenIDAppService';
+import { getAllLessonsService } from './GetAllLessons.Service';
 
 @Controller('lesson')
 export class LessonController {
   constructor(
     private readonly createLessonService: CreateLessonService,
-    //private readonly getAllCoursesServices: getAllCoursesService,
+    private readonly getAllLessonsServices: getAllLessonsService,
     private readonly getCourseByIdService: getCourseByIdService,
   ) { }
   @Post()
@@ -30,32 +32,13 @@ export class LessonController {
     return
   }
 
+
   @Get(':id')
-  async getCourseById(@Param('id') id: string): Promise<Iterable<Course>> {
+  async getLessons(@Param('id') id: string): Promise<Iterable<Lesson>> {
     return (
-      await new getCourseByIdApplicationService(
-        this.getCourseByIdService,
-      ).execute(id)
+      await new getAllLessonsApplicationService(
+        this.getAllLessonsServices,
+      ).execute(parseInt(id))
     ).get();
   }
-
-  /*@Get()
-  async GetAllCourses(
-    @Body() course: createCourseDto,
-  ): Promise<Iterable<Course>> {
-    return (
-      await new getAllCoursesApplicationService(
-        this.getAllCoursesServices,
-      ).execute()
-    ).get();
-  }*/
-
-  /*@Get(':id')
-  async getCourseById(@Param('id') id: string): Promise<Iterable<Course>> {
-    return (
-      await new getCourseByIdApplicationService(
-        this.getCourseByIdService,
-      ).execute(id)
-    ).get();
-  }*/
 }
