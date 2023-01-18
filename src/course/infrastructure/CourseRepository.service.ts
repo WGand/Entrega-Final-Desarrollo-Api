@@ -45,7 +45,7 @@ export class CourseRepositoryService implements CourseRepository {
   }
 
   async getCourseById(id: string): Promise<Result<Iterable<Course>>> {
-    console.log('GETALLCOURSES REPO SERVICE');
+    console.log('GETCOURSEBYID REPO SERVICE');
     const list = await this.courseRepository.find({
       where: {
         id: parseInt(id),
