@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Delete } from '@nestjs/common';
 import { LessonService } from '../application/LessonServices';
 import { CreateLessonApplicationService } from '../application/CreateLessonAppService';
 //import { getAllCoursesApplicationService } from '../application/getAllCoursesAppServices';
@@ -40,5 +40,11 @@ export class LessonController {
         this.getAllLessonsServices,
       ).execute(parseInt(id))
     ).get();
+  }
+
+  @Delete(':id')
+  async deleteLesson(@Param('id') id: string, lesson: createLessonDto): Promise<void> {
+    
+    return
   }
 }
