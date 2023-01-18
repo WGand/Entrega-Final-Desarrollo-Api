@@ -23,7 +23,7 @@ export class CourseFactory {
       new CourseDescriptionVO(course.description),
       CourseStateEnum[course.state],
       new ImagenVO(course.imagen),
-      new ProfessorNameVO('Erstwhile'),
+      new ProfessorNameVO(course.professorName),
     );
     return new Result<Course>(courseCreated);
   }
