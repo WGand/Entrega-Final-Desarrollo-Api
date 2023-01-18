@@ -16,7 +16,7 @@ export class Logger extends ServiceDecorator<CourseParameterObject, string> {
     this.iLogger = iLogger;
   }
   async execute(service: CourseParameterObject): Promise<Result<string>> {
-    this.iLogger.saveJson;
+    this.iLogger.log('comando: ' + service.title);
     const result = this.appService.execute(service);
     return await new Result('asdasd');
   }

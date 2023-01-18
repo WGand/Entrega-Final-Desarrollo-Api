@@ -1,3 +1,3 @@
 export interface ILogger {
-  saveJson(context: string, message: string);
+  log(message: string): void;
 }

@@ -1,21 +1,14 @@
-
 import { ILogger } from 'src/core/application/ILogger';
-import {writeFile} from 'fs/promises';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const fs = require('fs');
 
 export class LoggerImplementation implements ILogger {
-
-
-  save(data: {}): void {
-    writeFile('./data/logger.json', JSON.stringify(data, null, 2), 'utf8');
-}
-
- saveJson(context: string, message: string){
-    const data: {} = {
-        context: context,
-        message: message,
-        date: new Date().toISOString()
-    };
-    writeFile('./logger.json', JSON.stringify(data, null, 2,), 'utf8');
-
-}
+  log(message: string): void {
+    fs.appendFile('log.txt', `\n` + message, function (err) {
+      if (err) throw err;
+      else {
+        console.log('Guardado');
+      }
+    });
+  }
 }
