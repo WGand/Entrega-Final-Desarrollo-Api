@@ -15,5 +15,17 @@ export class getCourseByIdService implements getCourseById {
   getCourseById(id: string): Promise<Result<Iterable<Course>>> {
     console.log('GETBYID SERVICE SERVICE');
     return this.courseRepository.getCourseById(id);
+import { getCourseByIdDto } from './getCourseById.dto';
+
+@Injectable()
+export class getCourseByIdService implements getCourseById {
+  constructor(
+    private readonly courseRepository: CourseRepositoryService,
+    private readonly courseFactory: CourseFactory,
+  ) {}
+  async getCourseById(course: getCourseByIdDto): Promise<Result<Course>> {
+    return this.courseRepository.getCourseById(
+      this.courseFactory.getCourseById(course).get().getId(),
+    );
   }
 }
