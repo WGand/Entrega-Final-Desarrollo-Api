@@ -11,6 +11,8 @@ export class Logger extends ServiceDecorator<CourseParameterObject, string> {
   }
   async execute(service: CourseParameterObject): Promise<Result<string>> {
     
+    const fs = require('fs/promises');
+    await fs.writeFile('./test.txt', service);
     console.log('Log: ', service);
     const result = this.appService.execute(service);
     return await new Result('asdasd');
