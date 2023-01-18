@@ -1,5 +1,4 @@
 import { ApplicationService } from 'src/core/application/ApplicationService';
-import { Course } from '../domain/Course';
 import { CourseParameterObject } from '../domain/CourseParameterObject';
 import { createCourseDto } from '../infrastructure/createCourse.dto';
 

@@ -18,10 +18,6 @@ export class CourseRepositoryService implements CourseRepository {
     private readonly lessonRepository: Repository<LessonEntity>,
     private readonly courseFactory: CourseFactory,
   ) {}
-  
-  
-  
-  
   async createCourse(course: Course): Promise<Result<Course>> {
     const courseDto = new createCourseDto();
     courseDto.title = course.getTitle().getValue();
@@ -53,7 +49,4 @@ export class CourseRepositoryService implements CourseRepository {
     });
     return new Result(list as Iterable<Course>);
   }
-  
 }
-
-  

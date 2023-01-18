@@ -9,11 +9,9 @@ import { createCourseDto } from './createCourse.dto';
 
 @Injectable()
 export class getAllCoursesService implements getAllCourses {
-  constructor(
-    private readonly courseRepository: CourseRepositoryService,
-  ) {}
-    getAllCourses(): Promise<Result<Iterable<Course>>> {
-        console.log('GETALLCOURSES SERVICE SERVICE');
-     return this.courseRepository.getAllCourses()
-    };
+  constructor(private readonly courseRepository: CourseRepositoryService) {}
+  getAllCourses(): Promise<Result<Iterable<Course>>> {
+    console.log('GETALLCOURSES SERVICE SERVICE');
+    return this.courseRepository.getAllCourses();
+  }
 }

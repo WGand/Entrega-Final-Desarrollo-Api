@@ -9,8 +9,6 @@ export class CourseEntity {
   @Column()
   title: string;
 
-  
-
   @Column()
   imagen: string;
 

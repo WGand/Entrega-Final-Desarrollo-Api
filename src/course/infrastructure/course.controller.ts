@@ -16,8 +16,8 @@ export class CourseController {
   constructor(
     private readonly createCourseService: CreateCourseService,
     private readonly getAllCoursesServices: getAllCoursesService,
-    private readonly getCourseByIdService: getCourseByIdService
-      ) {}
+    private readonly getCourseByIdService: getCourseByIdService,
+  ) {}
   @Post()
   async createCourse(@Body() course: createCourseDto): Promise<void> {
     const appService = new CourseService(
@@ -36,15 +36,13 @@ export class CourseController {
       ).execute()
     ).get();
   }
-  
+
   @Get(':id')
-  async getCourseById(@Param ('id') id: string,
-    ): Promise<Iterable<Course>> {
+  async getCourseById(@Param('id') id: string): Promise<Iterable<Course>> {
     return (
       await new getCourseByIdApplicationService(
         this.getCourseByIdService,
       ).execute(id)
     ).get();
   }
- 
 }

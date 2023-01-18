@@ -1,6 +1,5 @@
 import { Result } from 'src/utils/Result';
 import { Course } from '../domain/Course';
-import { CourseParameterObject } from '../domain/CourseParameterObject';
 import { getAllCourses } from './GetAllCourses';
 
 export class getAllCoursesApplicationService {

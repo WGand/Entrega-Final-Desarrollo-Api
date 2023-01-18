@@ -19,8 +19,6 @@ import { LessonEntity } from './lesson.entity';
     CreateCourseService,
     getCourseByIdService,
     getAllCoursesService,
-    
-    
   ],
 })
 export class CourseModule {}
