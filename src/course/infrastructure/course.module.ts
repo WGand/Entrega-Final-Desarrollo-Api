@@ -6,7 +6,7 @@ import { CourseEntity } from './course.entity';
 import { CourseRepositoryService } from './CourseRepository.service';
 import { CreateCourseService } from './CreateCourse.service';
 import { getAllCoursesService } from './getAllCourses.service';
-import { getCoursesByIdService } from './getCourseById.service';
+import { getCourseByIdService } from './getCourseById.service';
 
 import { LessonEntity } from './lesson.entity';
 
@@ -17,8 +17,9 @@ import { LessonEntity } from './lesson.entity';
     CourseRepositoryService,
     CourseFactory,
     CreateCourseService,
+    getCourseByIdService,
     getAllCoursesService,
-    getCoursesByIdService
+    
     
   ],
 })

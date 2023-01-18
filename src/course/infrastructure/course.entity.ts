@@ -9,8 +9,7 @@ export class CourseEntity {
   @Column()
   title: string;
 
-  @Column()
-  professorName: string;
+  
 
   @Column()
   imagen: string;
