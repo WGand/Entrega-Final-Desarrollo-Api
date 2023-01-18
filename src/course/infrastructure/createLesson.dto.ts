@@ -17,4 +17,8 @@ export class createLessonDto {
     videoDuration: number;
   };
   comments: Comment[];
+
+  @IsString()
+  @IsNotEmpty()
+  CourseId: string
 }
