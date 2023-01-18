@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CourseService } from '../application/CourseServices';
 import { CreateCourseApplicationService } from '../application/CreateCourseAppService';
 import { getAllCoursesApplicationService } from '../application/getAllCoursesAppServices';
@@ -37,10 +37,9 @@ export class CourseController {
     ).get();
   }
   
-  @Get()
-  async getCourseById(
-    @Body() id: string,
-  ): Promise<Iterable<Course>> {
+  @Get(':id')
+  async getCourseById(@Param ('id') id: string,
+    ): Promise<Iterable<Course>> {
     return (
       await new getCourseByIdApplicationService(
         this.getCourseByIdService,
