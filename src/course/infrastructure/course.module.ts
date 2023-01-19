@@ -25,7 +25,7 @@ import { LessonRepositoryService } from './LessonRepository.service';
     getAllCoursesService,
     CreateLessonService,
     LessonRepositoryService,
-    getAllLessonsService
+    getAllLessonsService,
   ],
 })
 export class CourseModule {}

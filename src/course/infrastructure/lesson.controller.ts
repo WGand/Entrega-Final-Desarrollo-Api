@@ -10,6 +10,7 @@ import { Course } from '../domain/Course';
 import { getAllLessonsApplicationService } from '../application/GetAllLessonsGivenIDAppService';
 import { getAllLessonsService } from './GetAllLessons.Service';
 import { LoggerImplementation } from './LoggerImplementation';
+import { Lesson } from '../domain/Lesson';
 
 @Controller('lesson')
 export class LessonController {
@@ -31,8 +32,6 @@ export class LessonController {
     }
     return;
   }
-
-
   @Get(':id')
   async getLessons(@Param('id') id: string): Promise<Iterable<Lesson>> {
     return (

@@ -18,19 +18,25 @@ export class LessonRepositoryService implements LessonRepository {
     @InjectRepository(LessonEntity)
     private readonly lessonRepository: Repository<LessonEntity>,
     private readonly courseFactory: CourseFactory,
-  ) { }
-  async createLesson(lesson: Lesson, courseId: number): Promise<Result<Lesson>> {
+  ) {}
+  deleteLessonGivenByID(id: string): Promise<void> {
+    throw new Error('Method not implemented.');
+  }
+  async createLesson(
+    lesson: Lesson,
+    courseId: number,
+  ): Promise<Result<Lesson>> {
     const lessonDto = new createLessonDto();
 
     lessonDto.title = lesson.getTitle().getValue();
     lessonDto.description = lesson.getDescription().getValue();
     lessonDto.video = {
-      "videoUrl": lesson.getContent().getUrl().getValue(),
-      "type": lesson.getContent().getType(),
-      "title": lesson.getContent().getTitle().getValue(),
-      "videoDuration": lesson.getContent().getDuration().getValue()
-    }
-    lessonDto.CourseId = String(courseId)
+      videoUrl: lesson.getContent().getUrl().getValue(),
+      type: lesson.getContent().getType(),
+      title: lesson.getContent().getTitle().getValue(),
+      videoDuration: lesson.getContent().getDuration().getValue(),
+    };
+    lessonDto.CourseId = String(courseId);
     /*
     lessonDto.video.videoUrl = lesson.getContent().getUrl().getValue();
     lessonDto.video['type'] = lesson.getContent().getType();
@@ -54,17 +60,15 @@ export class LessonRepositoryService implements LessonRepository {
     });
     return new Result(list as Iterable<Lesson>);
   }
+  // async deleteLessonGivenByID(LessonID: string): Promise<void> {
 
-  async deleteLessonGivenByID(LessonID: string): Promise<void> {
-    
-    console.log('DELETELESSONS REPO SERVICE');
+  //   console.log('DELETELESSONS REPO SERVICE');
 
-    const lesson = await this.lessonRepository.delete({
-      where: {
-        id: LessonID,
-      },
-    });
+  //   const lesson = await this.lessonRepository.delete({
+  //     where: {
+  //       id: LessonID,
+  //     },
+  //   });
 
-  }
-
+  // }
 }
