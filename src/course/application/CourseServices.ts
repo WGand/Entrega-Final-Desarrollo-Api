@@ -15,4 +15,9 @@ export class CourseService {
   async createCourse(course: createCourseDto): Promise<Result<string>> {
     return await this.applicationService.execute(course);
   }
+
+  async DeleteCourse(course: createCourseDto): Promise<Result<string>> {
+    return await this.applicationService.execute(course);
+  }
+
 }

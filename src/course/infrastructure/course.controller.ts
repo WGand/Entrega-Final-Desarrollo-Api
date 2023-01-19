@@ -10,8 +10,10 @@ import { CreateCourseService } from './CreateCourse.service';
 import { getAllCoursesService } from './getAllCourses.service';
 import { getCourseByIdService } from './getCourseById.service';
 import { LoggerImplementation } from './LoggerImplementation';
+import { DeleteCourseService } from './DeleteCourse.service';
 import { CourseIdVO } from '../domain/value_objects/CourseIdVO';
 import { Result } from 'src/utils/Result';
+import { DeleteCourseApplicationService } from '../application/DeleteCourseAppService';
 
 @Controller('courses')
 export class CourseController {
@@ -19,6 +21,7 @@ export class CourseController {
     private readonly createCourseService: CreateCourseService,
     private readonly getAllCoursesServices: getAllCoursesService,
     private readonly getCourseByIdService: getCourseByIdService,
+    private readonly DeleteCourseService: DeleteCourseService,
   ) {}
   @Post()
   async createCourse(@Body() course: createCourseDto): Promise<Result<string>> {
@@ -49,12 +52,12 @@ export class CourseController {
     ).get();
   }
 
-  // @Delete(':id')
-  // async DeleteCourseById(@Param('id') id: string): Promise<string> {
-  //   const appService = new DeleteCourseApplicationService(
-  //     this.DeleteCourseService,
-  //     new CourseIdVO(parseInt(id)),
-  //   ).execute();
-  //   return 'Deleted';
-  // }
+   @Delete(':id')
+   async DeleteCourseById(@Param('id') id: string,@Body() course: createCourseDto): Promise<Result<string>> {
+    const appService = new CourseService(
+      new Logger(new DeleteCourseApplicationService(this.DeleteCourseService,new CourseIdVO(parseInt(id))),
+      new LoggerImplementation())
+    );
+    return await appService.DeleteCourse(course)
+  }
 }

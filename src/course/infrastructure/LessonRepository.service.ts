@@ -19,9 +19,6 @@ export class LessonRepositoryService implements LessonRepository {
     private readonly lessonRepository: Repository<LessonEntity>,
     private readonly courseFactory: CourseFactory,
   ) {}
-  deleteLessonGivenByID(id: string): Promise<void> {
-    throw new Error('Method not implemented.');
-  }
   async createLesson(
     lesson: Lesson,
     courseId: number,
@@ -60,15 +57,13 @@ export class LessonRepositoryService implements LessonRepository {
     });
     return new Result(list as Iterable<Lesson>);
   }
-  // async deleteLessonGivenByID(LessonID: string): Promise<void> {
 
-  //   console.log('DELETELESSONS REPO SERVICE');
+  async deleteLessonGivenByID(LessonID: string): Promise<void> {
+    
+    console.log('DELETELESSONS REPO SERVICE');
 
-  //   const lesson = await this.lessonRepository.delete({
-  //     where: {
-  //       id: LessonID,
-  //     },
-  //   });
+    const lesson = await this.lessonRepository.delete(parseInt(LessonID));
 
-  // }
+  }
+
 }
