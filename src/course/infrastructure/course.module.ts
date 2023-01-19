@@ -12,11 +12,8 @@ import { getCourseByIdService } from './CourseServices/getCourseById.service';
 import { LessonController } from './lesson.controller';
 import { LessonEntity } from './lesson.entity';
 import { LessonRepositoryService } from './LessonServices/LessonRepository.service';
-<<<<<<< Updated upstream
 import { DeleteCourseService } from './CourseServices/DeleteCourse.service';
-=======
 import { UpdateCourseService } from './CourseServices/UpdateCourse.service';
->>>>>>> Stashed changes
 
 @Module({
   imports: [TypeOrmModule.forFeature([CourseEntity, LessonEntity])],
@@ -30,11 +27,8 @@ import { UpdateCourseService } from './CourseServices/UpdateCourse.service';
     CreateLessonService,
     LessonRepositoryService,
     getAllLessonsService,
-<<<<<<< Updated upstream
-    DeleteCourseService
-=======
+    DeleteCourseService,
     UpdateCourseService,
->>>>>>> Stashed changes
   ],
 })
 export class CourseModule {}

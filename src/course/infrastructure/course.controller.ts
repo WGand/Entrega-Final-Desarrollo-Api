@@ -20,13 +20,10 @@ import { getCourseByIdService } from './CourseServices/getCourseById.service';
 import { LoggerImplementation } from './LoggerImplementation';
 import { CourseIdVO } from '../domain/value_objects/CourseIdVO';
 import { Result } from 'src/utils/Result';
-<<<<<<< Updated upstream
 import { DeleteCourseService } from './CourseServices/DeleteCourse.service';
 import { DeleteCourseApplicationService } from '../application/DeleteCourse/DeleteCourseAppService';
-=======
 import { UpdateCourseService } from './CourseServices/UpdateCourse.service';
 import { UpdateCourseAppService } from '../application/UpdateCourse/UpdateCourseAppService';
->>>>>>> Stashed changes
 
 @Controller('courses')
 export class CourseController {
@@ -34,11 +31,8 @@ export class CourseController {
     private readonly createCourseService: CreateCourseService,
     private readonly getAllCoursesServices: getAllCoursesService,
     private readonly getCourseByIdService: getCourseByIdService,
-<<<<<<< Updated upstream
     private readonly DeleteCourseService: DeleteCourseService,
-=======
     private readonly updateCourseService: UpdateCourseService,
->>>>>>> Stashed changes
   ) {}
   @Post()
   async createCourse(@Body() course: createCourseDto): Promise<Result<string>> {
@@ -77,12 +71,20 @@ export class CourseController {
     ).get();
   }
 
-   @Delete(':id')
-   async DeleteCourseById(@Param('id') id: string,@Body() course: createCourseDto): Promise<Result<string>> {
+  @Delete(':id')
+  async DeleteCourseById(
+    @Param('id') id: string,
+    @Body() course: createCourseDto,
+  ): Promise<Result<string>> {
     const appService = new CourseService(
-      new Logger(new DeleteCourseApplicationService(this.DeleteCourseService,new CourseIdVO(parseInt(id))),
-      new LoggerImplementation())
+      new Logger(
+        new DeleteCourseApplicationService(
+          this.DeleteCourseService,
+          new CourseIdVO(parseInt(id)),
+        ),
+        new LoggerImplementation(),
+      ),
     );
-    return await appService.DeleteCourse(course)
+    return await appService.DeleteCourse(course);
   }
 }
