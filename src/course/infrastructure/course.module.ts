@@ -12,6 +12,7 @@ import { getCourseByIdService } from './CourseServices/getCourseById.service';
 import { LessonController } from './lesson.controller';
 import { LessonEntity } from './lesson.entity';
 import { LessonRepositoryService } from './LessonServices/LessonRepository.service';
+import { DeleteCourseService } from './CourseServices/DeleteCourse.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([CourseEntity, LessonEntity])],
@@ -25,6 +26,7 @@ import { LessonRepositoryService } from './LessonServices/LessonRepository.servi
     CreateLessonService,
     LessonRepositoryService,
     getAllLessonsService,
+    DeleteCourseService
   ],
 })
 export class CourseModule {}

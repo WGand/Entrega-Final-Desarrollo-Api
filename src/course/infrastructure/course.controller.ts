@@ -10,10 +10,10 @@ import { CreateCourseService } from './CourseServices/CreateCourse.service';
 import { getAllCoursesService } from './CourseServices/getAllCourses.service';
 import { getCourseByIdService } from './CourseServices/getCourseById.service';
 import { LoggerImplementation } from './LoggerImplementation';
-import { DeleteCourseService } from './DeleteCourse.service';
 import { CourseIdVO } from '../domain/value_objects/CourseIdVO';
 import { Result } from 'src/utils/Result';
-import { DeleteCourseApplicationService } from '../application/DeleteCourseAppService';
+import { DeleteCourseService } from './CourseServices/DeleteCourse.service';
+import { DeleteCourseApplicationService } from '../application/DeleteCourse/DeleteCourseAppService';
 
 @Controller('courses')
 export class CourseController {
