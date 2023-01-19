@@ -8,6 +8,7 @@ import { CreateCourseService } from './CreateCourse.service';
 import { CreateLessonService } from './CreateLesson.service';
 import { DeleteCourseService } from './DeleteCourse.service';
 import { getAllCoursesService } from './getAllCourses.service';
+import { getAllLessonsService } from './GetAllLessons.Service';
 import { getCourseByIdService } from './getCourseById.service';
 import { LessonController } from './lesson.controller';
 import { LessonEntity } from './lesson.entity';
@@ -24,7 +25,7 @@ import { LessonRepositoryService } from './LessonRepository.service';
     getAllCoursesService,
     CreateLessonService,
     LessonRepositoryService,
-    DeleteCourseService,
+    getAllLessonsService
   ],
 })
 export class CourseModule {}

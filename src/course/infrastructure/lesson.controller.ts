@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Delete } from '@nestjs/common';
 import { LessonService } from '../application/LessonServices';
 import { CreateLessonApplicationService } from '../application/CreateLessonAppService';
 import { getCourseByIdApplicationService } from '../application/getCourseByIdAppService';
@@ -7,12 +7,15 @@ import { createLessonDto } from './createLesson.dto';
 import { CreateLessonService } from './CreateLesson.service';
 import { getCourseByIdService } from './getCourseById.service';
 import { Course } from '../domain/Course';
+import { getAllLessonsApplicationService } from '../application/GetAllLessonsGivenIDAppService';
+import { getAllLessonsService } from './GetAllLessons.Service';
 import { LoggerImplementation } from './LoggerImplementation';
 
 @Controller('lesson')
 export class LessonController {
   constructor(
     private readonly createLessonService: CreateLessonService,
+    private readonly getAllLessonsServices: getAllLessonsService,
     private readonly getCourseByIdService: getCourseByIdService,
   ) {}
   @Post()
@@ -29,12 +32,13 @@ export class LessonController {
     return;
   }
 
+
   @Get(':id')
-  async getCourseById(@Param('id') id: string): Promise<Iterable<Course>> {
+  async getLessons(@Param('id') id: string): Promise<Iterable<Lesson>> {
     return (
-      await new getCourseByIdApplicationService(
-        this.getCourseByIdService,
-      ).execute(id)
+      await new getAllLessonsApplicationService(
+        this.getAllLessonsServices,
+      ).execute(parseInt(id))
     ).get();
   }
 }
