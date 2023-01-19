@@ -16,4 +16,8 @@ export class LessonService {
     console.log('LessonService');
     return await this.applicationService.execute(lesson);
   }
+  async deleteLesson(Lesson: createLessonDto): Promise<Result<string>> {
+    return await this.applicationService.execute(Lesson);
+  }
+
 }

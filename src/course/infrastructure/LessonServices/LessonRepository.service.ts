@@ -53,12 +53,10 @@ export class LessonRepositoryService implements LessonRepository {
     return new Result(list as Iterable<Lesson>);
   }
 
-  async deleteLessonGivenByID(LessonID: string): Promise<void> {
-    
-    console.log('DELETELESSONS REPO SERVICE');
-
-    const lesson = await this.lessonRepository.delete(parseInt(LessonID));
-
+  async deleteLesson(LessonID: string): Promise<Result<string>> {
+    console.log('DELETE REPO SERVICE');
+    this.lessonRepository.delete(parseInt(LessonID));
+    return new Result('Leccion Borrada');
   }
 
 }

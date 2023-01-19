@@ -11,6 +11,10 @@ import { CreateLessonService } from './LessonServices/CreateLesson.service';
 import { getAllLessonsService } from './LessonServices/GetAllLessons.Service';
 import { CreateLessonApplicationService } from '../application/CreateLesson/CreateLessonAppService';
 import { getAllLessonsApplicationService } from '../application/GetLesson/GetAllLessonsGivenIDAppService';
+import { deleteLessonApplicationService } from '../application/DeleteLesson/deleteLessonAppService';
+import { LessonIdVO } from '../domain/value_objects/LessonIdVO';
+import { deleteLesson } from '../application/DeleteLesson/deleteLesson';
+import { deleteLessonService } from './LessonServices/deleteLesson.service';
 
 @Controller('lesson')
 export class LessonController {
@@ -18,6 +22,7 @@ export class LessonController {
     private readonly createLessonService: CreateLessonService,
     private readonly getAllLessonsServices: getAllLessonsService,
     private readonly getCourseByIdService: getCourseByIdService,
+    private readonly deleteLessonService: deleteLessonService,
   ) {}
   @Post()
   async createLesson(@Body() lesson: createLessonDto): Promise<Result<string>> {
@@ -41,5 +46,22 @@ export class LessonController {
         this.getAllLessonsServices,
       ).execute(parseInt(id))
     ).get();
+  }ç
+
+  @Delete(':id')
+  async DeleteLesson(
+    @Param('id') id: string,
+    @Body() Lesson: createLessonDto,
+  ): Promise<Result<string>> {
+    const appService = new LessonService(
+      new Logger(
+        new deleteLessonApplicationService(
+          this.deleteLessonService,
+          new LessonIdVO(parseInt(id)),
+        ),
+        new LoggerImplementation(),
+      ),
+    );
+    return await appService.deleteLesson(Lesson);
   }
 }

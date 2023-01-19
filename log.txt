@@ -23,3 +23,8 @@ comando: prueba en vivo 2 curso creado
 comando: prueba en vivo 2 curso creado
 comando: prueba en vivo 2 curso creado
 >>>>>>> Stashed changes
+
+comando: Actuacion Escenica curso creado
+comando: Como entrar en el metodoLeccion creada
+comando: Leccion creada
+comando: Borrada la leccion

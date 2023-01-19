@@ -1,20 +1,23 @@
 import { ApplicationService } from 'src/core/application/ApplicationService';
+import { LessonIdVO } from 'src/course/domain/value_objects/LessonIdVO';
 import { Result } from 'src/utils/Result';
 import { LessonParameterObject } from '../../domain/LessonParameterObject';
-import { deleteLessonById } from './deleteLessonById';
+import { deleteLesson } from './deleteLesson';
 
-export class CreateLessonApplicationService
-  implements ApplicationService<LessonParameterObject, void>
+export class  deleteLessonApplicationService
+  implements ApplicationService<LessonParameterObject, string>
 {
-  constructor(private readonly createLessonService: deleteLessonById) {
-    this.createLessonService = createLessonService;
+  id: LessonIdVO;
+  constructor(
+    private readonly deleteLessonService: deleteLesson,
+    id: LessonIdVO
+    ) {
+    this.deleteLessonService = deleteLessonService;
+    this.id = id;
   }
-  async execute(service: LessonParameterObject): Promise<Result<void>> {
-    console.log('CreateLessonAppService');
-    const lesson = this.createLessonService.deleteLessonById(
-      service as unknown as string,
-    );
-
-    return;
+  async execute(): Promise<Result<string>> {
+    console.log('BORRADO DE LECCION');
+    this.deleteLessonService.deleteLesson(this.id);
+    return new Result('Borrada la leccion');
   }
 }

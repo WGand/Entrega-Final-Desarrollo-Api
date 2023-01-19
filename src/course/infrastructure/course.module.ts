@@ -14,6 +14,8 @@ import { LessonEntity } from './lesson.entity';
 import { LessonRepositoryService } from './LessonServices/LessonRepository.service';
 import { DeleteCourseService } from './CourseServices/DeleteCourse.service';
 import { UpdateCourseService } from './CourseServices/UpdateCourse.service';
+import { deleteLessonService } from './LessonServices/deleteLesson.service';
+import { deleteLesson } from '../application/DeleteLesson/deleteLesson';
 
 @Module({
   imports: [TypeOrmModule.forFeature([CourseEntity, LessonEntity])],
@@ -29,6 +31,7 @@ import { UpdateCourseService } from './CourseServices/UpdateCourse.service';
     getAllLessonsService,
     DeleteCourseService,
     UpdateCourseService,
+    deleteLessonService,
   ],
 })
 export class CourseModule {}
