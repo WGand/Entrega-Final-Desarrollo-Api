@@ -1,5 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Res } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { CourseStateEnum } from 'src/course/domain/CourseStateEnum';
 import { Result } from 'src/utils/Result';
 import { Repository } from 'typeorm';
 import { Course } from '../../domain/Course';
@@ -22,19 +23,17 @@ export class CourseRepositoryService implements CourseRepository {
   ) {}
   async updateCourse(course: Course): Promise<Result<string>> {
     const lessons = Array.from(
-      (
-        await this.lessonService.getLessons(
-          course.getId().getValue().toString(),
-        )
-      ).get(),
+      (await this.lessonService.getLessons(course as unknown as string)).get(),
     );
-    if (lessons.length > 2) {
-      const courseUpdate = this.getCourseById(
-        course.getId().getValue().toString(),
-      )[0];
-      (await courseUpdate).get().setState('published');
-      this.courseRepository.save(courseUpdate);
-      return courseUpdate;
+    console.log(lessons.length);
+    if (lessons.length >= 2) {
+      const courseUpdate = await this.getCourseById(
+        course as unknown as string,
+      );
+      console.log(courseUpdate.get()[0]);
+      courseUpdate.get()[0].state = CourseStateEnum.Published;
+      this.courseRepository.save(courseUpdate.get()[0]);
+      return new Result(courseUpdate.get()[0].title);
     }
     return new Result('Curso no valido');
   }

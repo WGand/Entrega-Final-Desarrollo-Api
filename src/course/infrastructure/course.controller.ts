@@ -46,11 +46,14 @@ export class CourseController {
   }
 
   @Put(':id')
-  async updateCourseById(@Param('id') id: string): Promise<string> {
+  async updateCourseById(@Param('id') id: string): Promise<Result<string>> {
     const appService = new CourseService(
-      new Logger(new UpdateCourseAppService(), new LoggerImplementation()),
+      new Logger(
+        new UpdateCourseAppService(this.updateCourseService),
+        new LoggerImplementation(),
+      ),
     );
-    return;
+    return await appService.updateCourse(id as unknown as createCourseDto);
   }
 
   @Get()

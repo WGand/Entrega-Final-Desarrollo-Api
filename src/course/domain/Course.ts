@@ -72,4 +72,8 @@ export class Course {
       return true;
     }
   }
+
+  setState(state: CourseStateEnum): void {
+    this.state = state;
+  }
 }
