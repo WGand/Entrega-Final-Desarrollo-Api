@@ -5,6 +5,9 @@ export class CommentMessageVO implements ValueObject<string> {
   constructor(message: string) {
     this.message = message;
   }
+  isValid(): boolean {
+    return this.message.length > 0;
+  }
 
   equals(vo: CommentMessageVO): boolean {
     return this.message === vo.message;

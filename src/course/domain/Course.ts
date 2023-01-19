@@ -61,4 +61,15 @@ export class Course {
   getProfessorName(): ProfessorNameVO {
     return this.professorName;
   }
+
+  isValid(): boolean {
+    if (
+      this.getDescription().isValid() &&
+      this.getTitle().isValid() &&
+      this.getImage().isValid() &&
+      this.getProfessorName().isValid()
+    ) {
+      return true;
+    }
+  }
 }

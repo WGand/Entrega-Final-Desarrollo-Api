@@ -1,7 +1,6 @@
 import { Result } from 'src/utils/Result';
 import { createCourseDto } from '../infrastructure/createCourse.dto';
 import { createLessonDto } from '../infrastructure/createLesson.dto';
-import { getCourseByIdDto } from '../infrastructure/getCourseById.dto';
 import { Course } from './Course';
 import { CourseStateEnum } from './CourseStateEnum';
 import { Lesson } from './Lesson';
@@ -16,7 +15,6 @@ import { ContentTypeEnum } from './ContentType';
 import { ContentTitleVO } from './value_objects/ContentTitleVO';
 import { VideoDurationVO } from './value_objects/VideoDurationVO';
 import { ProfessorNameVO } from './value_objects/ProfessorNameVO';
-import { CourseIdVO } from './value_objects/CourseIdVO';
 
 export class CourseFactory {
   createCourse(course: createCourseDto): Result<Course> {
@@ -25,7 +23,7 @@ export class CourseFactory {
       new CourseDescriptionVO(course.description),
       CourseStateEnum[course.state],
       new ImagenVO(course.imagen),
-      new ProfessorNameVO('Erstwhile'),
+      new ProfessorNameVO(course.professorName),
     );
     return new Result<Course>(courseCreated);
   }
@@ -40,7 +38,6 @@ export class CourseFactory {
         new VideoDurationVO(lesson.video.videoDuration),
       ),
       new LessonDescriptionVO(lesson.description),
-
     );
     return new Result<Lesson>(lessonCreated);
 

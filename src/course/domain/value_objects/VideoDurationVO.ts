@@ -5,6 +5,9 @@ export class VideoDurationVO implements ValueObject<number> {
   constructor(duration: number) {
     this.duration = duration;
   }
+  isValid(): boolean {
+    return this.duration > 0;
+  }
 
   equals(vo: VideoDurationVO): boolean {
     return this.duration === vo.duration;

@@ -5,6 +5,9 @@ export class ImagenVO implements ValueObject<string> {
   constructor(link: string) {
     this.link = link;
   }
+  isValid(): boolean {
+    return this.link.length > 0;
+  }
 
   equals(vo: ImagenVO): boolean {
     return this.link === vo.link;

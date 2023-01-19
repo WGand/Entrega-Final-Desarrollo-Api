@@ -39,8 +39,20 @@ export class Lesson {
     return this.id;
   }
 
+  isValid(): boolean {
+    if (
+      this.getId().isValid() &&
+      this.getDescription().isValid() &&
+      this.getTitle().isValid() &&
+      this.getContent().getUrl().isValid() &&
+      this.getContent().getDuration().isValid() &&
+      this.getContent().getId().isValid() 
+      
+    ) {
+      return true;
+    }
+  }
 
 
-
-  /*tambien le colocamos el idVO?*/
+  
 }

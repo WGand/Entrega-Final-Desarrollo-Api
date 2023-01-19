@@ -8,8 +8,8 @@ export class LessonEntity {
   title: string;
   @Column()
   description: string;
-  @Column("simple-json")
-  video: { 'videoUrl': string, 'type': string, 'title': string, 'duration': string };
+  @Column('simple-json')
+  video: { videoUrl: string; type: string; title: string; duration: string };
 
   @Column()
   CourseId: string;

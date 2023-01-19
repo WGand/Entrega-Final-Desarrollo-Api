@@ -5,10 +5,8 @@ import { Repository } from 'typeorm';
 import { Course } from '../domain/Course';
 import { CourseFactory } from '../domain/CourseFactory';
 import { CourseRepository } from '../domain/CourseRepository';
-import { CourseIdVO } from '../domain/value_objects/CourseIdVO';
 import { CourseEntity } from './course.entity';
 import { createCourseDto } from './createCourse.dto';
-import { getCourseByIdDto } from './getCourseById.dto';
 import { LessonEntity } from './lesson.entity';
 
 @Injectable()
@@ -21,16 +19,23 @@ export class CourseRepositoryService implements CourseRepository {
     private readonly courseFactory: CourseFactory,
   ) {}
 
-  async createCourse(course: Course): Promise<Result<Course>> {
+  async createCourse(course: Course): Promise<Result<string>> {
     const courseDto = new createCourseDto();
     courseDto.title = course.getTitle().getValue();
     courseDto.description = course.getDescription().getValue();
     courseDto.state = course.getState();
     courseDto.imagen = course.getImage().getValue();
     courseDto.professorName = course.getProfessorName().getValue();
-    return this.courseFactory.createCourse(
-      await this.courseRepository.save(courseDto),
-    );
+    if (course.isValid()) {
+      return new Result(
+        this.courseFactory
+          .createCourse(await this.courseRepository.save(courseDto))
+          .get()
+          .getTitle()
+          .getValue(),
+      );
+    }
+    return new Result('Curso no valido');
   }
 
   async getAllCourses(): Promise<Result<Iterable<Course>>> {
@@ -51,5 +56,11 @@ export class CourseRepositoryService implements CourseRepository {
       },
     });
     return new Result(list as Iterable<Course>);
+  }
+
+  async DeleteCourseById(id: string): Promise<Result<string>> {
+    console.log('DELETE REPO SERVICE');
+    this.courseRepository.delete(parseInt(id));
+    return new Result('Curso Borrado');
   }
 }

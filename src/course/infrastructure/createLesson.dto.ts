@@ -17,5 +17,5 @@ export class createLessonDto {
 
   @IsString()
   @IsNotEmpty()
-  CourseId: string
+  CourseId: string;
 }
