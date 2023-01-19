@@ -10,6 +10,7 @@ import { Course } from '../domain/Course';
 import { getAllLessonsApplicationService } from '../application/GetAllLessonsGivenIDAppService';
 import { getAllLessonsService } from './GetAllLessons.Service';
 import { LoggerImplementation } from './LoggerImplementation';
+import { Lesson } from '../domain/Lesson';
 
 @Controller('lesson')
 export class LessonController {
@@ -24,10 +25,7 @@ export class LessonController {
       const appService = new LessonService(
         new Logger(
           new CreateLessonApplicationService(this.createLessonService),
-<<<<<<< Updated upstream
           new LoggerImplementation(),
-=======
->>>>>>> Stashed changes
         ),
       );
       return appService.createLesson(lesson);
@@ -43,9 +41,6 @@ export class LessonController {
       ).execute(parseInt(id))
     ).get();
   }
-<<<<<<< Updated upstream
-=======
-
   @Delete(':id')
   async deleteLesson(
     @Param('id') id: string,
@@ -53,5 +48,4 @@ export class LessonController {
   ): Promise<void> {
     return;
   }
->>>>>>> Stashed changes
 }
