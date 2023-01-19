@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Result } from 'src/utils/Result';
-import { getAllLessons } from '../application/GetAllLesonsGivenByID';
-import { Lesson } from '../domain/Lesson';
+import { getAllLessons } from '../../application/GetLesson/GetAllLesonsGivenByID';
+import { Lesson } from '../../domain/Lesson';
 import { LessonRepositoryService } from './LessonRepository.service';
 
 

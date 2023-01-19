@@ -1,7 +1,7 @@
 import { ApplicationService } from 'src/core/application/ApplicationService';
 import { Result } from 'src/utils/Result';
-import { CourseParameterObject } from '../domain/CourseParameterObject';
-import { createCourseDto } from '../infrastructure/createCourse.dto';
+import { CourseParameterObject } from '../../domain/CourseParameterObject';
+import { createCourseDto } from '../../infrastructure/createCourse.dto';
 
 export class CourseService {
   constructor(

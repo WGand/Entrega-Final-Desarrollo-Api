@@ -1,7 +1,6 @@
 import { ApplicationService } from 'src/core/application/ApplicationService';
 import { Result } from 'src/utils/Result';
-import { LessonParameterObject } from '../domain/LessonParameterObject';
-import { createLessonDto } from '../infrastructure/createLesson.dto';
+import { LessonParameterObject } from '../../domain/LessonParameterObject';
 import { deleteLessonById } from './deleteLessonById';
 
 export class CreateLessonApplicationService
@@ -11,7 +10,7 @@ export class CreateLessonApplicationService
     this.createLessonService = createLessonService;
   }
   async execute(service: LessonParameterObject): Promise<Result<void>> {
-    console.log('CreateLessonAppService')
+    console.log('CreateLessonAppService');
     const lesson = this.createLessonService.deleteLessonById(
       service as unknown as string,
     );

@@ -1,14 +1,12 @@
 import { Body, Controller, Get, Param, Post, Delete } from '@nestjs/common';
 import { LessonService } from '../application/LessonServices';
-import { CreateLessonApplicationService } from '../application/CreateLessonAppService';
-import { getCourseByIdApplicationService } from '../application/getCourseByIdAppService';
+import { CreateLessonApplicationService } from '../application/CreateLesson/CreateLessonAppService';
 import { Logger } from '../application/Logger';
 import { createLessonDto } from './createLesson.dto';
-import { CreateLessonService } from './CreateLesson.service';
-import { getCourseByIdService } from './getCourseById.service';
-import { Course } from '../domain/Course';
-import { getAllLessonsApplicationService } from '../application/GetAllLessonsGivenIDAppService';
-import { getAllLessonsService } from './GetAllLessons.Service';
+import { CreateLessonService } from './LessonServices/CreateLesson.service';
+import { getCourseByIdService } from './CourseServices/getCourseById.service';
+import { getAllLessonsApplicationService } from '../application/GetLesson/GetAllLessonsGivenIDAppService';
+import { getAllLessonsService } from './LessonServices/GetAllLessons.Service';
 import { LoggerImplementation } from './LoggerImplementation';
 import { Lesson } from '../domain/Lesson';
 

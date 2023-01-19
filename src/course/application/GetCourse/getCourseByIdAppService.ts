@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Result } from 'src/utils/Result';
-import { Course } from '../domain/Course';
+import { Course } from '../../domain/Course';
 import { getCourseById } from './getCourseById';
 
 export class getCourseByIdApplicationService {

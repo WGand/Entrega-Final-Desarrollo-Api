@@ -1,9 +1,8 @@
 import { Result } from 'src/utils/Result';
 import { ApplicationService } from 'src/core/application/ApplicationService';
-import { CourseParameterObject } from '../domain/CourseParameterObject';
+import { CourseParameterObject } from '../../domain/CourseParameterObject';
 import { DeleteCourse } from './DeleteCourse';
-import { CourseIdVO } from '../domain/value_objects/CourseIdVO';
-import { Console } from 'console';
+import { CourseIdVO } from '../../domain/value_objects/CourseIdVO';
 
 export class DeleteCourseApplicationService
   implements ApplicationService<CourseParameterObject, string>

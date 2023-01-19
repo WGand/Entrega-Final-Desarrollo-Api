@@ -3,16 +3,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CourseFactory } from '../domain/CourseFactory';
 import { CourseController } from './course.controller';
 import { CourseEntity } from './course.entity';
-import { CourseRepositoryService } from './CourseRepository.service';
-import { CreateCourseService } from './CreateCourse.service';
-import { CreateLessonService } from './CreateLesson.service';
-import { DeleteCourseService } from './DeleteCourse.service';
-import { getAllCoursesService } from './getAllCourses.service';
-import { getAllLessonsService } from './GetAllLessons.Service';
-import { getCourseByIdService } from './getCourseById.service';
+import { CourseRepositoryService } from './CourseServices/CourseRepository.service';
+import { CreateCourseService } from './CourseServices/CreateCourse.service';
+import { CreateLessonService } from './LessonServices/CreateLesson.service';
+import { getAllCoursesService } from './CourseServices/getAllCourses.service';
+import { getAllLessonsService } from './LessonServices/GetAllLessons.Service';
+import { getCourseByIdService } from './CourseServices/getCourseById.service';
 import { LessonController } from './lesson.controller';
 import { LessonEntity } from './lesson.entity';
-import { LessonRepositoryService } from './LessonRepository.service';
+import { LessonRepositoryService } from './LessonServices/LessonRepository.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([CourseEntity, LessonEntity])],
