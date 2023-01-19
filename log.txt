@@ -16,4 +16,10 @@ comando: prueba en vivo 2
 comando: prueba en vivo 2
 comando: prueba en vivo 2
 comando: prueba en vivo 2
+<<<<<<< Updated upstream
 comando: Borrado
+=======
+comando: prueba en vivo 2 curso creado
+comando: prueba en vivo 2 curso creado
+comando: prueba en vivo 2 curso creado
+>>>>>>> Stashed changes

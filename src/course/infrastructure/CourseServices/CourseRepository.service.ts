@@ -8,6 +8,7 @@ import { CourseRepository } from '../../domain/CourseRepository';
 import { CourseEntity } from '../course.entity';
 import { createCourseDto } from '../createCourse.dto';
 import { LessonEntity } from '../lesson.entity';
+import { LessonRepositoryService } from '../LessonServices/LessonRepository.service';
 
 @Injectable()
 export class CourseRepositoryService implements CourseRepository {
@@ -17,7 +18,26 @@ export class CourseRepositoryService implements CourseRepository {
     @InjectRepository(LessonEntity)
     private readonly lessonRepository: Repository<LessonEntity>,
     private readonly courseFactory: CourseFactory,
+    private readonly lessonService: LessonRepositoryService,
   ) {}
+  async updateCourse(course: Course): Promise<Result<string>> {
+    const lessons = Array.from(
+      (
+        await this.lessonService.getLessons(
+          course.getId().getValue().toString(),
+        )
+      ).get(),
+    );
+    if (lessons.length > 2) {
+      const courseUpdate = this.getCourseById(
+        course.getId().getValue().toString(),
+      )[0];
+      (await courseUpdate).get().setState('published');
+      this.courseRepository.save(courseUpdate);
+      return courseUpdate;
+    }
+    return new Result('Curso no valido');
+  }
 
   async createCourse(course: Course): Promise<Result<string>> {
     const courseDto = new createCourseDto();

@@ -15,9 +15,15 @@ export class CourseService {
   async createCourse(course: createCourseDto): Promise<Result<string>> {
     return await this.applicationService.execute(course);
   }
+<<<<<<< Updated upstream
 
   async DeleteCourse(course: createCourseDto): Promise<Result<string>> {
     return await this.applicationService.execute(course);
   }
 
+=======
+  async updateCourse(course: createCourseDto): Promise<Result<string>> {
+    return await this.applicationService.execute(course);
+  }
+>>>>>>> Stashed changes
 }
