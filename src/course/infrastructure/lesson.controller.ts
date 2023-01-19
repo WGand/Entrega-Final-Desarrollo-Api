@@ -1,14 +1,16 @@
 import { Body, Controller, Get, Param, Post, Delete } from '@nestjs/common';
 import { LessonService } from '../application/LessonServices';
-import { CreateLessonApplicationService } from '../application/CreateLesson/CreateLessonAppService';
 import { Logger } from '../application/Logger';
 import { createLessonDto } from './createLesson.dto';
-import { CreateLessonService } from './LessonServices/CreateLesson.service';
-import { getCourseByIdService } from './CourseServices/getCourseById.service';
-import { getAllLessonsApplicationService } from '../application/GetLesson/GetAllLessonsGivenIDAppService';
-import { getAllLessonsService } from './LessonServices/GetAllLessons.Service';
+import { Course } from '../domain/Course';
 import { LoggerImplementation } from './LoggerImplementation';
 import { Lesson } from '../domain/Lesson';
+import { Result } from 'src/utils/Result';
+import { getCourseByIdService } from '../infrastructure/CourseServices/getCourseById.service';
+import { CreateLessonService } from './LessonServices/CreateLesson.service';
+import { getAllLessonsService } from './LessonServices/GetAllLessons.Service';
+import { CreateLessonApplicationService } from '../application/CreateLesson/CreateLessonAppService';
+import { getAllLessonsApplicationService } from '../application/GetLesson/GetAllLessonsGivenIDAppService';
 
 @Controller('lesson')
 export class LessonController {
@@ -18,17 +20,19 @@ export class LessonController {
     private readonly getCourseByIdService: getCourseByIdService,
   ) {}
   @Post()
-  async createLesson(@Body() lesson: createLessonDto): Promise<void> {
+  async createLesson(@Body() lesson: createLessonDto): Promise<Result<string>> {
+    console.log('ANTES DEL IF EN EL CREATELESSONS');
     if (this.getCourseByIdService.getCourseById(lesson.CourseId) != undefined) {
+      console.log('DESPUES DEL IF EN EL CREATELESSONS');
       const appService = new LessonService(
         new Logger(
           new CreateLessonApplicationService(this.createLessonService),
           new LoggerImplementation(),
         ),
       );
+      console.log('A PUNTO DE LLAMAR A CREATELESSON');
       return appService.createLesson(lesson);
     }
-    return;
   }
   @Get(':id')
   async getLessons(@Param('id') id: string): Promise<Iterable<Lesson>> {

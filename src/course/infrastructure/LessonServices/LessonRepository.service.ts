@@ -19,10 +19,7 @@ export class LessonRepositoryService implements LessonRepository {
     private readonly lessonRepository: Repository<LessonEntity>,
     private readonly courseFactory: CourseFactory,
   ) {}
-  async createLesson(
-    lesson: Lesson,
-    courseId: number,
-  ): Promise<Result<Lesson>> {
+  async createLesson(lesson: Lesson,courseId: number,): Promise<Result<string>> {
     const lessonDto = new createLessonDto();
 
     lessonDto.title = lesson.getTitle().getValue();
@@ -34,18 +31,16 @@ export class LessonRepositoryService implements LessonRepository {
       videoDuration: lesson.getContent().getDuration().getValue(),
     };
     lessonDto.CourseId = String(courseId);
-    /*
-    lessonDto.video.videoUrl = lesson.getContent().getUrl().getValue();
-    lessonDto.video['type'] = lesson.getContent().getType();
-    lessonDto.video['title'] = lesson.getContent().getTitle().getValue();
-    lessonDto.video['videoDuration'] = lesson
-      .getContent()
-      .getDuration()
-      .getValue();
-      */
-    return this.courseFactory.createLesson(
-      await this.lessonRepository.save(lessonDto),
-    );
+    if (lesson.isValid()) {
+      return new Result(
+        this.courseFactory
+          .createLesson(await this.lessonRepository.save(lessonDto))
+          .get()
+          .getTitle()
+          .getValue(),
+      );
+    }
+    return new Result('Leccion no valida');
   }
 
   async getLessons(id: string): Promise<Result<Iterable<Lesson>>> {
