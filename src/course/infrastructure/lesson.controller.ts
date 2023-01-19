@@ -24,14 +24,16 @@ export class LessonController {
       const appService = new LessonService(
         new Logger(
           new CreateLessonApplicationService(this.createLessonService),
+<<<<<<< Updated upstream
           new LoggerImplementation(),
+=======
+>>>>>>> Stashed changes
         ),
       );
       return appService.createLesson(lesson);
     }
     return;
   }
-
 
   @Get(':id')
   async getLessons(@Param('id') id: string): Promise<Iterable<Lesson>> {
@@ -41,4 +43,15 @@ export class LessonController {
       ).execute(parseInt(id))
     ).get();
   }
+<<<<<<< Updated upstream
+=======
+
+  @Delete(':id')
+  async deleteLesson(
+    @Param('id') id: string,
+    lesson: createLessonDto,
+  ): Promise<void> {
+    return;
+  }
+>>>>>>> Stashed changes
 }
