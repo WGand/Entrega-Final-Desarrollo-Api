@@ -2,13 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Result } from 'src/utils/Result';
 import { Repository } from 'typeorm';
-import { CourseFactory } from '../domain/CourseFactory';
-import { LessonRepository } from '../domain/LessonRepository';
-import { CourseEntity } from './course.entity';
-import { LessonEntity } from './lesson.entity';
-import { Lesson } from '../domain/Lesson';
-import { createLessonDto } from './createLesson.dto';
-import { LessonDescriptionVO } from '../domain/value_objects/LessonDescriptionVO';
+import { CourseFactory } from '../../domain/CourseFactory';
+import { LessonRepository } from '../../domain/LessonRepository';
+import { CourseEntity } from '../course.entity';
+import { LessonEntity } from '../lesson.entity';
+import { Lesson } from '../../domain/Lesson';
+import { createLessonDto } from '../createLesson.dto';
+import { LessonDescriptionVO } from '../../domain/value_objects/LessonDescriptionVO';
 
 @Injectable()
 export class LessonRepositoryService implements LessonRepository {

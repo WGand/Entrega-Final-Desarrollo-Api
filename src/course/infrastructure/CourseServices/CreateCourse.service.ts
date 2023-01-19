@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { Result } from 'src/utils/Result';
-import { CreateCourse } from '../application/CreateCourse';
-import { CourseFactory } from '../domain/CourseFactory';
+import { CreateCourse } from '../../application/CreateCourse/CreateCourse';
+import { CourseFactory } from '../../domain/CourseFactory';
 import { CourseRepositoryService } from './CourseRepository.service';
-import { createCourseDto } from './createCourse.dto';
+import { createCourseDto } from '../createCourse.dto';
 
 @Injectable()
 export class CreateCourseService implements CreateCourse {

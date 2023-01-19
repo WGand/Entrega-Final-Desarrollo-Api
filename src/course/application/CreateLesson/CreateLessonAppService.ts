@@ -1,7 +1,7 @@
 import { ApplicationService } from 'src/core/application/ApplicationService';
 import { Result } from 'src/utils/Result';
-import { LessonParameterObject } from '../domain/LessonParameterObject';
-import { createLessonDto } from '../infrastructure/createLesson.dto';
+import { LessonParameterObject } from '../../domain/LessonParameterObject';
+import { createLessonDto } from '../../infrastructure/createLesson.dto';
 import { CreateLesson } from './CreateLesson';
 
 export class CreateLessonApplicationService

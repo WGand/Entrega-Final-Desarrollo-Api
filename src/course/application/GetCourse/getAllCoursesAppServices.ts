@@ -1,5 +1,5 @@
 import { Result } from 'src/utils/Result';
-import { Course } from '../domain/Course';
+import { Course } from '../../domain/Course';
 import { getAllCourses } from './GetAllCourses';
 
 export class getAllCoursesApplicationService {
