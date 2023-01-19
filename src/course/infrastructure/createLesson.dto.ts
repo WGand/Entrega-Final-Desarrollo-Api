@@ -1,5 +1,10 @@
-import { IsNotEmpty, IsString, ValidateNested } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, ValidateNested } from 'class-validator';
 export class createLessonDto {
+
+  @IsNumber()
+  @IsNotEmpty()
+  id: number;
+
   @IsString()
   @IsNotEmpty()
   title: string;

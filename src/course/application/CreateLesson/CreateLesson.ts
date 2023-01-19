@@ -1,7 +1,7 @@
+import { createLessonDto } from 'src/course/infrastructure/createLesson.dto';
 import { Result } from 'src/utils/Result';
-import { Lesson } from '../../domain/Lesson';
-import { createLessonDto } from '../../infrastructure/createLesson.dto';
+
 
 export interface CreateLesson {
-  createLesson(lesson: createLessonDto): Promise<Result<Lesson>>;
+  createLesson(lesson: createLessonDto): Promise<Result<string>>;
 }

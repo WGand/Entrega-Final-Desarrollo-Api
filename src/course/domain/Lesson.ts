@@ -40,17 +40,20 @@ export class Lesson {
   }
 
   isValid(): boolean {
+
     if (
-      this.getId().isValid() &&
+      
       this.getDescription().isValid() &&
-      this.getTitle().isValid() &&
-      this.getContent().getUrl().isValid() &&
-      this.getContent().getDuration().isValid() &&
-      this.getContent().getId().isValid() 
+      this.getTitle().isValid()
+      //this.getContent().getUrl().isValid() &&
+      //this.getContent().getDuration().isValid() &&
+      //this.getContent().getId().isValid() 
       
     ) {
       return true;
     }
+
+    return false;
   }
 
 

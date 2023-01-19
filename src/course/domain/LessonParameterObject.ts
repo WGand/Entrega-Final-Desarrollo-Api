@@ -2,7 +2,7 @@ export class LessonParameterObject {
   id: number;
   title: string;
   description: string;
-  CourseId: string
+  CourseId: string;
   constructor(id?: number, title?: string, description?: string, CourseId?: string) {
     this.id = id;
     this.title = title;

@@ -2,7 +2,7 @@ import { Result } from 'src/utils/Result';
 import { Lesson } from './Lesson';
 
 export interface LessonRepository {
-  createLesson(lesson: Lesson, courseId: number): Promise<Result<Lesson>>;
+  createLesson(lesson: Lesson, courseId: number): Promise<Result<string>>;
   getLessons(id: string): Promise<Result<Iterable<Lesson>>>;
   deleteLessonGivenByID(id: string): Promise<void>;
   // getCourseById(id: CourseIdVO): Result<Course>;

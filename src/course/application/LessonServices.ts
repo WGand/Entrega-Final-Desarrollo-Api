@@ -1,18 +1,19 @@
 import { ApplicationService } from 'src/core/application/ApplicationService';
 import { LessonParameterObject } from '../domain/LessonParameterObject';
 import { createLessonDto } from '../infrastructure/createLesson.dto';
+import { Result } from 'src/utils/Result';
 
 export class LessonService {
   constructor(
     private readonly applicationService: ApplicationService<
-      LessonParameterObject,
+      LessonParameterObject, 
       string
     >,
   ) {
     this.applicationService = applicationService;
   }
-  async createLesson(lesson: createLessonDto): Promise<void> {
+  async createLesson(lesson: createLessonDto): Promise<Result<string>> {
     console.log('LessonService');
-    this.applicationService.execute(lesson as unknown as LessonParameterObject);
+    return await this.applicationService.execute(lesson);
   }
 }
